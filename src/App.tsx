@@ -8,19 +8,19 @@ function App() {
     return (
         <div className="App bg-gray-100 h-screen">
             <header 
-                className="p-4 flex items-center justify-between bg-[#add3e5]" 
-                style={{fontFamily: '"Segoe UI", Tahoma, Geneva, Verdana, sans-serif', boxShadow: '2px 2px 2px rgba(0, 0, 0, 0.2)'}}
+                className="p-4 flex items-center justify-between bg-purple-400"
+                style={{boxShadow: '2px 2px 2px rgba(0, 0, 0, 0.2)'}}
             >
-                <div className="ml-2 pb-1 text-[1.4rem] font-thin text-white" style={{textShadow: '2px 3px #60b2d7'}}>
+                <div className="ml-2 pb-1 text-[1.4rem] font-thin text-white" style={{textShadow: '2px 3px #735bbf'}}>
                     Password Manager Another Test
                 </div>
                 <div className="flex items-center">
                     <div className="mr-2 flex space-x-2">
-                        <div className="px-2 mt-1 w-6 h-6 text-xs text-gray-400 border-gray-400 border rounded grid place-items-center">a</div>
-                        <div className="px-2 mt-1 w-6 h-6 text-xs text-gray-400 border-gray-400 border rounded grid place-items-center">b</div>
+                        <div className="px-2 mt-1 w-6 h-6 text-xs text-gray-100 border-gray-100 border rounded grid place-items-center">a</div>
+                        <div className="px-2 mt-1 w-6 h-6 text-xs text-gray-100 border-gray-100 border rounded grid place-items-center">b</div>
                     </div>
                     <a
-                        className="p-1 pt-2 pb-0 border rounded-full text-gray-400 border-gray-400"
+                        className="p-1 pt-2 pb-0 border rounded-full text-gray-100 border-gray-100"
                         href="https://github.com/maxzz/test-pm/#Other-test-pages" target="_blank"
                     >
                         <div className="w-5 h-5">
