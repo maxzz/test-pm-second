@@ -6,7 +6,7 @@ function App() {
     const [password, setPassword] = useState('123456');
 
     return (
-        <div className="App bg-gray-100 h-screen bg-hero-pattern">
+        <div className="App bg-purple-900 h-screen bg-hero-pattern">
             <header 
                 className="p-4 flex items-center justify-between bg-purple-400"
                 style={{boxShadow: '2px 2px 2px rgba(0, 0, 0, 0.2)'}}
