@@ -19,13 +19,13 @@ function App() {
                         <a href="https://maxzz.github.io/test-pm">
                             <div className="px-2 mt-1 w-6 h-6 text-xs text-gray-100 border-gray-100 border rounded grid place-items-center" title="Open original pm-test">1</div>
                         </a>
-                        <a href="/">
+                        <a href="https://maxzz.github.io/test-pm-second">
                             <div className="px-2 mt-1 w-6 h-6 text-xs text-gray-100 border-gray-100 border rounded grid place-items-center" title="Reload this page">2</div>
                         </a>
                     </div>
                     <a
                         className="p-1 pt-2 pb-0 border rounded-full text-gray-100 border-gray-100"
-                        href="https://maxzz.github.io/test-pm-second" target="_blank"
+                        href="https://github.com/maxzz/test-pm-second/#Other-test-pages" target="_blank"
                         title="Open GitHub source code"
                     >
                         <div className="w-5 h-5">
