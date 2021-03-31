@@ -26,6 +26,7 @@ function App() {
                     <a
                         className="p-1 pt-2 pb-0 border rounded-full text-gray-100 border-gray-100"
                         href="https://github.com/maxzz/test-pm-second/#Other-test-pages" target="_blank"
+                        title="Open GitHub source code"
                     >
                         <div className="w-5 h-5">
                             <svg className="stroke-1" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
