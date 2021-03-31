@@ -16,12 +16,16 @@ function App() {
                 </div>
                 <div className="flex items-center">
                     <div className="mr-2 flex space-x-2">
-                        <div className="px-2 mt-1 w-6 h-6 text-xs text-gray-100 border-gray-100 border rounded grid place-items-center">a</div>
-                        <div className="px-2 mt-1 w-6 h-6 text-xs text-gray-100 border-gray-100 border rounded grid place-items-center">b</div>
+                        <a href="https://github.com/maxzz/test-pm">
+                            <div className="px-2 mt-1 w-6 h-6 text-xs text-gray-100 border-gray-100 border rounded grid place-items-center" title="Open original pm-test">1</div>
+                        </a>
+                        <a href="/">
+                            <div className="px-2 mt-1 w-6 h-6 text-xs text-gray-100 border-gray-100 border rounded grid place-items-center" title="Reload this page">2</div>
+                        </a>
                     </div>
                     <a
                         className="p-1 pt-2 pb-0 border rounded-full text-gray-100 border-gray-100"
-                        href="https://github.com/maxzz/test-pm/#Other-test-pages" target="_blank"
+                        href="https://github.com/maxzz/test-pm-second/#Other-test-pages" target="_blank"
                     >
                         <div className="w-5 h-5">
                             <svg className="stroke-1" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
