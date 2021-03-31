@@ -34,6 +34,7 @@ function App() {
 
             {/* <div style={{boxShadow: '0 0 20px 7px rgba(255, 255, 255, .3)'}}> */}
                 <section className="px-4 py-3 mt-4 mx-auto bg-purple-100 max-w-sm rounded-lg border shadow-sm ring-2 ring-purple-900 ring-offset-1 ring-offset-purple-600"
+                style={{'--tw-ring-offset-color': 'red'} as any}
                 >
                     <form id="test">
                         <div className="text-gray-600">Username</div>
