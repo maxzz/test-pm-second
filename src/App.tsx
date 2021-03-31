@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-    const [username, setUsername] = useState('aaa');
+    const [username, setUsername] = useState('maxzz');
     const [password, setPassword] = useState('123456');
 
     return (
@@ -32,17 +32,20 @@ function App() {
                 </div>
             </header>
 
-            <section className="px-4 py-3 mt-4 mx-auto bg-purple-100 max-w-sm rounded-lg border shadow">
-                <form id="test">
-                    <div className="text-gray-600">Username</div>
-                    <input className="px-2 py-1 mt-1 mb-4 text-base text-gray-600 w-full border border-purple-200 shadow-inner rounded outline-none focus:ring focus:ring-purple-300 focus:ring-offset-1" spellCheck="false" autoComplete="email" value={username} onChange={e => setUsername(e.target.value)}/>
-                    <div className="text-gray-600">Password</div>
-                    <input className="px-2 py-1 mt-1 mb-4 text-base text-gray-600 w-full border border-purple-200 shadow-inner rounded outline-none focus:ring focus:ring-purple-300 focus:ring-offset-1" spellCheck="false" autoComplete="password" value={password} onChange={e => setPassword(e.target.value)} type="password"/>
-                    <div className="flex justify-end">
-                        <button className="px-4 py-2 rounded text-sm text-gray-100 bg-purple-500 outline-none focus:outline-none focus:ring focus:ring-purple-300 focus:ring-offset-1" onClick={(e) => e.preventDefault()}>Login</button>
-                    </div>
-                </form>
-            </section>
+            {/* <div style={{boxShadow: '0 0 20px 7px rgba(255, 255, 255, .3)'}}> */}
+                <section className="px-4 py-3 mt-4 mx-auto bg-purple-100 max-w-sm rounded-lg border shadow-sm ring-2 ring-purple-900 ring-offset-1 ring-offset-purple-600"
+                >
+                    <form id="test">
+                        <div className="text-gray-600">Username</div>
+                        <input className="px-2 py-1 mt-1 mb-4 text-base text-gray-600 w-full border border-purple-200 shadow-inner rounded outline-none focus:ring focus:ring-purple-300 focus:ring-offset-1" spellCheck="false" autoComplete="email" value={username} onChange={e => setUsername(e.target.value)}/>
+                        <div className="text-gray-600">Password</div>
+                        <input className="px-2 py-1 mt-1 mb-4 text-base text-gray-600 w-full border border-purple-200 shadow-inner rounded outline-none focus:ring focus:ring-purple-300 focus:ring-offset-1" spellCheck="false" autoComplete="password" value={password} onChange={e => setPassword(e.target.value)} type="password"/>
+                        <div className="flex justify-end">
+                            <button className="px-4 py-2 rounded text-sm text-gray-100 bg-purple-500 outline-none focus:outline-none focus:ring focus:ring-purple-300 focus:ring-offset-1" onClick={(e) => e.preventDefault()}>Login</button>
+                        </div>
+                    </form>
+                </section>
+            {/* </div> */}
         </div>
     );
 }
