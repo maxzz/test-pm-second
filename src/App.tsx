@@ -16,7 +16,7 @@ function App() {
                 </div>
                 <div className="flex items-center">
                     <div className="mr-2 flex space-x-2">
-                        <a href="https://github.com/maxzz/test-pm">
+                        <a href="https://maxzz.github.io/test-pm">
                             <div className="px-2 mt-1 w-6 h-6 text-xs text-gray-100 border-gray-100 border rounded grid place-items-center" title="Open original pm-test">1</div>
                         </a>
                         <a href="/">
@@ -25,7 +25,7 @@ function App() {
                     </div>
                     <a
                         className="p-1 pt-2 pb-0 border rounded-full text-gray-100 border-gray-100"
-                        href="https://github.com/maxzz/test-pm-second/#Other-test-pages" target="_blank"
+                        href="https://maxzz.github.io/test-pm-second" target="_blank"
                         title="Open GitHub source code"
                     >
                         <div className="w-5 h-5">
