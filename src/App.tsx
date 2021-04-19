@@ -39,6 +39,7 @@ function App() {
                     </a>
                 </div>
             </header>
+            <Ghost></Ghost>
 
             {/* Login form itself */}
             <div className="max-w-sm mx-auto" style={{ boxShadow: '0 0 20px 7px rgba(255, 255, 255, .3)' }}>
@@ -61,8 +62,7 @@ function App() {
                     </form>
                 </section>
             </div>
-            <Ghost></Ghost>
-            <GhostDeartyDeeds />
+            {/* <GhostDeartyDeeds /> */}
         </div>
     );
 }
