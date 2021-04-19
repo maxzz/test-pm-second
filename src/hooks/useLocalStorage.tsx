@@ -2,11 +2,10 @@ import { useState, useEffect } from 'react';
 
 export const Storage = {
     get(key: string, defaultValue: any) {
-        let str;
         try {
-            str = localStorage.getItem(key);
+            let str = localStorage.getItem(key);
             return str !== null ? JSON.parse(str) : defaultValue;
-        } catch (e) {
+        } catch (error) {
             return defaultValue;
         }
     },
@@ -18,13 +17,17 @@ export const Storage = {
     }
 };
 
-function useLocalStorage<T>(key: string, initialValue?: T | (() => T)) {
+function useLocalStorage<T>(key: string, defaultValue?: T | (() => T)) {
     let [value, setValue] = useState<T>(() => {
         let stored = localStorage.getItem(key);
         if (stored !== null) {
-            return JSON.parse(stored);
+            try {
+                return JSON.parse(stored);    
+            } catch (error) {
+                return defaultValue;
+            }
         }
-        return typeof initialValue === 'function' ? (initialValue as () => T)() : initialValue;
+        return typeof defaultValue === 'function' ? (defaultValue as () => T)() : defaultValue;
     });
 
     useEffect(() => {
