@@ -61,27 +61,15 @@ function App() {
                     <form id="test">
                         {/* Username */}
                         <div className="text-gray-600">Username</div>
-                        <input
-                            className="inp"
-                            spellCheck="false" autoComplete="email" value={username} onChange={e => setUsername(e.target.value)}
-                        />
+                        <input className="inp" spellCheck="false" autoComplete="email" value={username} onChange={e => setUsername(e.target.value)}/>
 
                         {/* Password */}
                         <div className="text-gray-600">Password</div>
-                        <input
-                            className="inp"
-                            spellCheck="false" autoComplete="password" value={password} onChange={e => setPassword(e.target.value)} type="password"
-                        />
+                        <input className="inp" spellCheck="false" autoComplete="password" value={password} onChange={e => setPassword(e.target.value)} type="password"/>
 
                         {/* Submit */}
                         <div className="flex justify-end">
-                            <button
-                                className="px-4 py-2 rounded text-sm text-gray-100 bg-purple-500
-                                    outline-none focus:outline-none focus:ring focus:ring-purple-300 focus:ring-offset-1
-                                    transform active:scale-105"
-                                onClick={(e) => {e.preventDefault(); setShowBabba((prev) => !prev)}
-                                }
-                            >Login</button>
+                            <button className="btn" onClick={(e) => {e.preventDefault(); setShowBabba((prev) => !prev)}}>Login</button>
                         </div>
                     </form>
                 </section>
