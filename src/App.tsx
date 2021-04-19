@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
-import Ghost from "./components/GhostBubba";
+import GhostBubba from "./components/GhostBubba";
 import GhostDeartyDeeds from './components/GhostDeartyDeeds';
 
 function App() {
     const [username, setUsername] = useState('maxzz');
     const [password, setPassword] = useState('123456');
+    const [showBabba, setShowBabba] = useState(false);
+
+    useEffect(() => {
+        if (showBabba) {
+            let timeout = setTimeout(() => setShowBabba(false), 1000);
+            return () => {
+                clearTimeout(timeout);
+            }
+        }
+    }, [showBabba]);
 
     return (
         <div className="App bg-purple-900 h-screen bg-hero-pattern">
@@ -39,7 +49,8 @@ function App() {
                     </a>
                 </div>
             </header>
-            <Ghost></Ghost>
+
+            {showBabba && <GhostBubba></GhostBubba>}
 
             {/* Login form itself */}
             <div className="max-w-sm mx-auto" style={{ boxShadow: '0 0 20px 7px rgba(255, 255, 255, .3)' }}>
@@ -56,7 +67,8 @@ function App() {
                                 className="px-4 py-2 rounded text-sm text-gray-100 bg-purple-500 
                                     outline-none focus:outline-none focus:ring focus:ring-purple-300 focus:ring-offset-1
                                     transform active:scale-105"
-                                onClick={(e) => e.preventDefault()}
+                                onClick={(e) => {e.preventDefault(); setShowBabba((prev) => !prev)}
+                                }
                             >Login</button>
                         </div>
                     </form>
