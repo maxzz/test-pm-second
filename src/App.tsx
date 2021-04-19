@@ -62,14 +62,14 @@ function App() {
                         {/* Username */}
                         <div className="text-gray-600">Username</div>
                         <input
-                            className="px-2 py-1 mt-1 mb-4 text-base text-gray-600 w-full border border-purple-300 shadow-inner rounded outline-none focus:ring focus:ring-purple-300 focus:ring-offset-1"
+                            className="inp"
                             spellCheck="false" autoComplete="email" value={username} onChange={e => setUsername(e.target.value)}
                         />
 
                         {/* Password */}
                         <div className="text-gray-600">Password</div>
                         <input
-                            className="px-2 py-1 mt-1 mb-4 text-base text-gray-600 w-full border border-purple-300 shadow-inner rounded outline-none focus:ring focus:ring-purple-300 focus:ring-offset-1"
+                            className="inp"
                             spellCheck="false" autoComplete="password" value={password} onChange={e => setPassword(e.target.value)} type="password"
                         />
 
