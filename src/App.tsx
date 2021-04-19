@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import GhostBubba from "./components/GhostBubba";
 import GhostDeartyDeeds from './components/GhostDeartyDeeds';
+import useLocalStorage from './hooks/useLocalStorage';
 
 function App() {
-    const [username, setUsername] = useState('maxzz');
-    const [password, setPassword] = useState('123456');
+    const [username, setUsername] = useLocalStorage('pm-test-2-username', 'maxzz');
+    const [password, setPassword] = useLocalStorage('pm-test-2-password', '123456');
     const [showBabba, setShowBabba] = useState(false);
 
     useEffect(() => {
