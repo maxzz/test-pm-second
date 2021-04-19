@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react-dom": "^17.0.0",
+    "use-hooks": "^2.0.0-rc.5"
   },
   "devDependencies": {
     "@tailwindcss/jit": "^0.1.17",

@@ -59,13 +59,24 @@ function App() {
                     style={{ '--tw-ring-offset-color': '#fff', boxShadow: 'var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)' } as any}
                 >
                     <form id="test">
+                        {/* Username */}
                         <div className="text-gray-600">Username</div>
-                        <input className="px-2 py-1 mt-1 mb-4 text-base text-gray-600 w-full border border-purple-300 shadow-inner rounded outline-none focus:ring focus:ring-purple-300 focus:ring-offset-1" spellCheck="false" autoComplete="email" value={username} onChange={e => setUsername(e.target.value)} />
+                        <input
+                            className="px-2 py-1 mt-1 mb-4 text-base text-gray-600 w-full border border-purple-300 shadow-inner rounded outline-none focus:ring focus:ring-purple-300 focus:ring-offset-1"
+                            spellCheck="false" autoComplete="email" value={username} onChange={e => setUsername(e.target.value)}
+                        />
+
+                        {/* Password */}
                         <div className="text-gray-600">Password</div>
-                        <input className="px-2 py-1 mt-1 mb-4 text-base text-gray-600 w-full border border-purple-300 shadow-inner rounded outline-none focus:ring focus:ring-purple-300 focus:ring-offset-1" spellCheck="false" autoComplete="password" value={password} onChange={e => setPassword(e.target.value)} type="password" />
+                        <input
+                            className="px-2 py-1 mt-1 mb-4 text-base text-gray-600 w-full border border-purple-300 shadow-inner rounded outline-none focus:ring focus:ring-purple-300 focus:ring-offset-1"
+                            spellCheck="false" autoComplete="password" value={password} onChange={e => setPassword(e.target.value)} type="password"
+                        />
+
+                        {/* Submit */}
                         <div className="flex justify-end">
                             <button
-                                className="px-4 py-2 rounded text-sm text-gray-100 bg-purple-500 
+                                className="px-4 py-2 rounded text-sm text-gray-100 bg-purple-500
                                     outline-none focus:outline-none focus:ring focus:ring-purple-300 focus:ring-offset-1
                                     transform active:scale-105"
                                 onClick={(e) => {e.preventDefault(); setShowBabba((prev) => !prev)}
