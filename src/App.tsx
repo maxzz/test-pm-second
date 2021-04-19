@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import Ghost from './components/ghost';
+import Ghost from "./components/GhostBubba";
+import GhostDeartyDeeds from './components/GhostDeartyDeeds';
 
 function App() {
     const [username, setUsername] = useState('maxzz');
@@ -61,6 +62,7 @@ function App() {
                 </section>
             </div>
             <Ghost></Ghost>
+            <GhostDeartyDeeds />
         </div>
     );
 }
