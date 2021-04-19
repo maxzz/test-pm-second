@@ -8,3 +8,8 @@ Second page for checking logins on the same domain.
 
 * [test-pm](https://github.com/maxzz/test-pm)
 * [test-pm-2](https://github.com/maxzz/test-pm-second)
+
+### Credits and References
+
+* [usehooks.com/](https://usehooks.com/)
+
