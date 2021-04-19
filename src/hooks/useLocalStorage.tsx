@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-
-// TODO: debounce, if (window && listenToStorageChanges) useEventListener(window, 'storage', read);
+import { useState } from 'react';
 
 function useLocalStorage<T>(key: string, defaultValue?: T | (() => T)) {
+    // TODO: debounce, if (window && listenToStorageChanges) useEventListener(window, 'storage', read);
+
     let [storedValue, setStoredValue] = useState<T>(() => {
         let stored = localStorage.getItem(key);
         if (stored !== null) {
@@ -15,23 +15,11 @@ function useLocalStorage<T>(key: string, defaultValue?: T | (() => T)) {
         return typeof defaultValue === 'function' ? (defaultValue as () => T)() : defaultValue;
     });
 
-    /*
-    useEffect(() => {
-        if (!storedValue) {
-            localStorage.removeItem(key);
-        } else {
-            localStorage.setItem(key, JSON.stringify(storedValue));
-        }
-    }, [key, storedValue]);
-    */
-
     const setValue = (value: T | ((val: T) => T)) => {
         try {
             // Allow value to be a function so we have same API as useState.
             const valueToStore = value instanceof Function ? value(storedValue) : value;
-            // Save state
             setStoredValue(valueToStore);
-            // Save to local storage
             if (!valueToStore) {
                 localStorage.removeItem(key);
             } else {
