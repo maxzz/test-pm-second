@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import Ghost from './components/ghost';
 
 function App() {
     const [username, setUsername] = useState('maxzz');
@@ -59,6 +60,7 @@ function App() {
                     </form>
                 </section>
             </div>
+            <Ghost></Ghost>
         </div>
     );
 }
