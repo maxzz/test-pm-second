@@ -2,7 +2,7 @@
 
 Second page for checking logins on the same domain.
 
-![](src/assets/preview-2021-03-30_18-32-01.png)
+![](src/assets/previews/preview-2021-03-30_18-32-01.png)
 
 ### Other test pages
 
