@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import useLocalStorage from './hooks/useLocalStorage';
 import { GhostBubba, GhostDeartyDeeds, PhUserCircleDuotone } from './components/Icons';
+import { a, useSpring } from '@react-spring/web';
 
 function Header() {
     return (
@@ -40,12 +41,20 @@ function Header() {
 function LoginForm({ setShowBabba }: { setShowBabba: React.Dispatch<React.SetStateAction<boolean>>; }) {
     const [username, setUsername] = useLocalStorage('pm-test-2-username', 'maxzz');
     const [password, setPassword] = useLocalStorage('pm-test-2-password', '123456');
+    // const [styles, api] = useSpring(() => ({
+    //     from: { y: 200, },
+    //     to: { y: 100, },
+    // }));
+    const styles = useSpring({
+        from: { y: 200, },
+        to: { y: 100, },
+    });
     return (
-        <form id="test" className="pt-6 pb-4">
+        <a.form style={styles} id="test" className="pt-6 pb-4">
             <PhUserCircleDuotone className="w-16 h-16 mb-2 text-purple-400" />
 
             {/* Username */}
-            <div className="text-purple-800">Username</div>
+            <div className="text-purple-800">Username1</div>
             <input className="inp" spellCheck="false" autoComplete="email" value={username} onChange={e => setUsername(e.target.value)} />
 
             {/* Password */}
@@ -56,7 +65,7 @@ function LoginForm({ setShowBabba }: { setShowBabba: React.Dispatch<React.SetSta
             <div className="flex justify-end">
                 <button className="btn" onClick={(e) => { e.preventDefault(); setShowBabba((prev) => !prev); }}>Login</button>
             </div>
-        </form>
+        </a.form>
     );
 }
 
