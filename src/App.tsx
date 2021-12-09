@@ -71,6 +71,7 @@ function LoginForm({ logged, onLogin }: { logged: boolean; onLogin: () => void; 
                     e.preventDefault();
                     api.start({
                         opacity: 0,
+                        config: {duration: 200,},
                         onRest: onLogin
                     });
                 }}
@@ -82,9 +83,9 @@ function LoginForm({ logged, onLogin }: { logged: boolean; onLogin: () => void; 
 
 export function GhostBubba() {
     return (
-        <div className="relative">
-            <div className="w-32 h-32 absolute -top-4 right-[5rem] text-purple-900">
-                <IconGhostBubba />
+        <div className="relative z-10">
+            <div className="absolute top-4 right-64 w-32 h-32 text-purple-900">
+                <IconGhostBubba className="transform scale-x-[-1] fill-[red]" />
             </div>
         </div>
     );
@@ -127,7 +128,8 @@ function App() {
     return (
         <div className="App bg-purple-900 h-screen bg-hero-pattern">
             <Header />
-            {showBabba && <GhostBubba />}
+            {/* {showBabba && <GhostBubba />} */}
+            {<GhostBubba />}
             {!showBabba && <Section showBabba={showBabba} setShowBabba={setShowBabba} />}
             {/* <GhostDeartyDeeds /> */}
         </div>
