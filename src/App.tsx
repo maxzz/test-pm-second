@@ -64,8 +64,10 @@ function LoginForm({ onLogin }: { onLogin: () => void; }) {
             <div className="flex justify-end">
                 <button className="btn" onClick={(e) => {
                     e.preventDefault();
-                    api.start({ opacity: 0 });
-                    onLogin();
+                    api.start({
+                        opacity: 0,
+                        onRest: () => onLogin()
+                    });
                 }}
                 >Login</button>
             </div>
@@ -91,7 +93,9 @@ function Section({ setShowBabba }: { setShowBabba: React.Dispatch<React.SetState
                     boxShadow: 'var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)',
                 } as any}
             >
-                <LoginForm onLogin={() => setShowBabba((prev) => !prev)} />
+                <LoginForm onLogin={() => {
+                    setShowBabba((prev) => !prev);
+                }} />
             </section>
         </a.div>
     );
