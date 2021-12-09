@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import useLocalStorage from './hooks/useLocalStorage';
 import { GhostBubba, GhostDeartyDeeds, PhUserCircleDuotone } from './components/Icons';
-import { a, useSpring } from '@react-spring/web';
+import { a, config, useSpring } from '@react-spring/web';
 
 function Header() {
     return (
@@ -44,14 +44,14 @@ function LoginForm({ setShowBabba }: { setShowBabba: React.Dispatch<React.SetSta
     const [styles, api] = useSpring(() => ({
         from: { opacity: 0, },
         to: { opacity: 1, },
-        config: { duration: 5600 },
+        config: { ...{duration: 600}, ...config.wobbly },
     }));
     // const styles = useSpring({
     //     from: { opacity: 0, },
     //     to: { opacity: 1, },
     // });
     return (
-        <form id="test" className="pt-6 pb-4">
+        <form id="test" className="pt-6 pb-4 text-sm">
             <a.div style={styles}>
                 <PhUserCircleDuotone className="w-16 h-16 mb-2 text-purple-400" />
             </a.div>
@@ -76,10 +76,13 @@ function Section({ setShowBabba }: { setShowBabba: React.Dispatch<React.SetState
     const [styles, api] = useSpring(() => ({
         from: { transform: 'scaleX(0)' },
         to: { transform: 'scaleX(1)' },
-        config: { duration: 200 },
+        config: { ...config.wobbly },
     }));
     return (
-        <a.div style={{ ...styles, ...{ boxShadow: '0 0 20px 7px rgba(255, 255, 255, .3)' } }} className="max-w-sm mx-auto" >
+        <a.div
+            className="max-w-xs mx-auto"
+            style={{ ...styles, ...{ boxShadow: '0 0 20px 7px rgba(255, 255, 255, .3)' } }}
+        >
             <section
                 className="px-4 py-3 mt-4 bg-purple-200 rounded-lg border shadow-sm ring-2 ring-purple-900 ring-offset-1 ring-offset-purple-600"
                 style={{
