@@ -118,7 +118,7 @@ function App() {
         <div className="App bg-purple-900 h-screen bg-hero-pattern">
             <Header />
             {showBabba && <GhostBubba />}
-            <Section showBabba={showBabba} setShowBabba={setShowBabba} />
+            {!showBabba && <Section showBabba={showBabba} setShowBabba={setShowBabba} />}
             {/* <GhostDeartyDeeds /> */}
         </div>
     );
