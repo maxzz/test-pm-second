@@ -42,17 +42,19 @@ function LoginForm({ setShowBabba }: { setShowBabba: React.Dispatch<React.SetSta
     const [username, setUsername] = useLocalStorage('pm-test-2-username', 'maxzz');
     const [password, setPassword] = useLocalStorage('pm-test-2-password', '123456');
     const [styles, api] = useSpring(() => ({
-        from: { y: 200, },
-        to: { y: 0, },
+        from: { opacity: 0, },
+        to: { opacity: 1, },
+        config: { duration: 5600 },
     }));
     // const styles = useSpring({
-    //     from: { y: 200, },
-    //     to: { y: 100, },
+    //     from: { opacity: 0, },
+    //     to: { opacity: 1, },
     // });
     return (
         <form id="test" className="pt-6 pb-4">
-            {/* <a.form style={styles} id="test" className="pt-6 pb-4"> */}
-            <PhUserCircleDuotone className="w-16 h-16 mb-2 text-purple-400" />
+            <a.div style={styles}>
+                <PhUserCircleDuotone className="w-16 h-16 mb-2 text-purple-400" />
+            </a.div>
 
             {/* Username */}
             <div className="text-purple-800">Username</div>
@@ -77,7 +79,7 @@ function Section({ setShowBabba }: { setShowBabba: React.Dispatch<React.SetState
         config: { duration: 200 },
     }));
     return (
-        <a.div style={{...styles, ...{ boxShadow: '0 0 20px 7px rgba(255, 255, 255, .3)' }}} className="max-w-sm mx-auto" >
+        <a.div style={{ ...styles, ...{ boxShadow: '0 0 20px 7px rgba(255, 255, 255, .3)' } }} className="max-w-sm mx-auto" >
             <section
                 className="px-4 py-3 mt-4 bg-purple-200 rounded-lg border shadow-sm ring-2 ring-purple-900 ring-offset-1 ring-offset-purple-600"
                 style={{
