@@ -38,7 +38,7 @@ function Header() {
     );
 }
 
-function LoginForm({ onLogin }: { onLogin: () => void; }) {
+function LoginForm({ logged, onLogin }: { logged: boolean; onLogin: () => void; }) {
     const [username, setUsername] = useLocalStorage('pm-test-2-username', 'maxzz');
     const [password, setPassword] = useLocalStorage('pm-test-2-password', '123456');
     const [styles, api] = useSpring(() => ({
@@ -46,6 +46,11 @@ function LoginForm({ onLogin }: { onLogin: () => void; }) {
         to: { opacity: 1, },
         config: { ...{ duration: 600 }, ...config.wobbly },
     }));
+    React.useEffect(() => {
+        if (logged) {
+            api.start({ opacity: 1, delay: 1200 });
+        }
+    }, [logged]);
     return (
         <form id="test" className="pt-6 pb-4 text-sm">
             <a.div style={styles}>
@@ -66,7 +71,7 @@ function LoginForm({ onLogin }: { onLogin: () => void; }) {
                     e.preventDefault();
                     api.start({
                         opacity: 0,
-                        onRest: () => onLogin()
+                        onRest: onLogin
                     });
                 }}
                 >Login</button>
@@ -75,7 +80,7 @@ function LoginForm({ onLogin }: { onLogin: () => void; }) {
     );
 }
 
-function Section({ setShowBabba }: { setShowBabba: React.Dispatch<React.SetStateAction<boolean>>; }) {
+function Section({ showBabba, setShowBabba }: { showBabba: boolean; setShowBabba: React.Dispatch<React.SetStateAction<boolean>>; }) {
     const [styles, api] = useSpring(() => ({
         from: { transform: 'scaleX(0)' },
         to: { transform: 'scaleX(1)' },
@@ -93,9 +98,7 @@ function Section({ setShowBabba }: { setShowBabba: React.Dispatch<React.SetState
                     boxShadow: 'var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)',
                 } as any}
             >
-                <LoginForm onLogin={() => {
-                    setShowBabba((prev) => !prev);
-                }} />
+                <LoginForm logged={showBabba} onLogin={() => setShowBabba((prev) => !prev)} />
             </section>
         </a.div>
     );
@@ -107,9 +110,7 @@ function App() {
     useEffect(() => {
         if (showBabba) {
             let timeout = setTimeout(() => setShowBabba(false), 1000);
-            return () => {
-                clearTimeout(timeout);
-            };
+            return () => clearTimeout(timeout);
         }
     }, [showBabba]);
 
@@ -117,7 +118,7 @@ function App() {
         <div className="App bg-purple-900 h-screen bg-hero-pattern">
             <Header />
             {showBabba && <GhostBubba />}
-            <Section setShowBabba={setShowBabba} />
+            <Section showBabba={showBabba} setShowBabba={setShowBabba} />
             {/* <GhostDeartyDeeds /> */}
         </div>
     );
