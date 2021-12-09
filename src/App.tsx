@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import useLocalStorage from './hooks/useLocalStorage';
-import { GhostBubba, GhostDeartyDeeds, PhUserCircleDuotone } from './components/Icons';
+import { IconGhostBubba, GhostDeartyDeeds, PhUserCircleDuotone } from './components/Icons';
 import { a, config, useSpring } from '@react-spring/web';
 
 function Header() {
@@ -77,6 +77,16 @@ function LoginForm({ logged, onLogin }: { logged: boolean; onLogin: () => void; 
                 >Login</button>
             </div>
         </form>
+    );
+}
+
+export function GhostBubba() {
+    return (
+        <div className="relative">
+            <div className="w-32 h-32 absolute -top-4 right-[5rem] text-purple-900">
+                <IconGhostBubba />
+            </div>
+        </div>
     );
 }
 
