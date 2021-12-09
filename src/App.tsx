@@ -41,16 +41,17 @@ function Header() {
 function LoginForm({ setShowBabba }: { setShowBabba: React.Dispatch<React.SetStateAction<boolean>>; }) {
     const [username, setUsername] = useLocalStorage('pm-test-2-username', 'maxzz');
     const [password, setPassword] = useLocalStorage('pm-test-2-password', '123456');
-    // const [styles, api] = useSpring(() => ({
+    const [styles, api] = useSpring(() => ({
+        from: { y: 200, },
+        to: { y: 0, },
+    }));
+    // const styles = useSpring({
     //     from: { y: 200, },
     //     to: { y: 100, },
-    // }));
-    const styles = useSpring({
-        from: { y: 200, },
-        to: { y: 100, },
-    });
+    // });
     return (
-        <a.form style={styles} id="test" className="pt-6 pb-4">
+        <form id="test" className="pt-6 pb-4">
+        {/* <a.form style={styles} id="test" className="pt-6 pb-4"> */}
             <PhUserCircleDuotone className="w-16 h-16 mb-2 text-purple-400" />
 
             {/* Username */}
@@ -65,13 +66,17 @@ function LoginForm({ setShowBabba }: { setShowBabba: React.Dispatch<React.SetSta
             <div className="flex justify-end">
                 <button className="btn" onClick={(e) => { e.preventDefault(); setShowBabba((prev) => !prev); }}>Login</button>
             </div>
-        </a.form>
+        </form>
     );
 }
 
 function Section({ setShowBabba }: { setShowBabba: React.Dispatch<React.SetStateAction<boolean>>; }) {
+    const [styles, api] = useSpring(() => ({
+        from: {width: '0%'},
+        to: {width: '50%'},
+    }));
     return (
-        <div className="max-w-sm mx-auto" style={{ boxShadow: '0 0 20px 7px rgba(255, 255, 255, .3)' }}>
+        <a.div style={styles} className="max-w-sm mx-auto" > {/* style={{ boxShadow: '0 0 20px 7px rgba(255, 255, 255, .3)' }} */}
             <section
                 className="px-4 py-3 mt-4 bg-purple-200 rounded-lg border shadow-sm ring-2 ring-purple-900 ring-offset-1 ring-offset-purple-600"
                 style={{
@@ -81,7 +86,7 @@ function Section({ setShowBabba }: { setShowBabba: React.Dispatch<React.SetState
             >
                 <LoginForm setShowBabba={setShowBabba} />
             </section>
-        </div>
+        </a.div>
     );
 }
 
