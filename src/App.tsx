@@ -51,7 +51,7 @@ function LoginForm({ setShowBabba }: { setShowBabba: React.Dispatch<React.SetSta
     // });
     return (
         <form id="test" className="pt-6 pb-4">
-        {/* <a.form style={styles} id="test" className="pt-6 pb-4"> */}
+            {/* <a.form style={styles} id="test" className="pt-6 pb-4"> */}
             <PhUserCircleDuotone className="w-16 h-16 mb-2 text-purple-400" />
 
             {/* Username */}
@@ -72,8 +72,11 @@ function LoginForm({ setShowBabba }: { setShowBabba: React.Dispatch<React.SetSta
 
 function Section({ setShowBabba }: { setShowBabba: React.Dispatch<React.SetStateAction<boolean>>; }) {
     const [styles, api] = useSpring(() => ({
-        from: {width: '0%'},
-        to: {width: '50%'},
+        from: { transform: 'scaleX(0)' },
+        to: { transform: 'scaleX(1)', boxShadow: '0 0 20px 7px rgba(255, 255, 255, .3)' },
+        // from: { transform: 'rotateY(90deg)' },
+        // to: { transform: 'rotateY(0deg)' },
+        config: { duration: 200 },
     }));
     return (
         <a.div style={styles} className="max-w-sm mx-auto" > {/* style={{ boxShadow: '0 0 20px 7px rgba(255, 255, 255, .3)' }} */}
