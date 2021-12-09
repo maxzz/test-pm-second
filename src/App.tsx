@@ -38,18 +38,14 @@ function Header() {
     );
 }
 
-function LoginForm({ setShowBabba }: { setShowBabba: React.Dispatch<React.SetStateAction<boolean>>; }) {
+function LoginForm({ onLogin }: { onLogin: () => void; }) {
     const [username, setUsername] = useLocalStorage('pm-test-2-username', 'maxzz');
     const [password, setPassword] = useLocalStorage('pm-test-2-password', '123456');
     const [styles, api] = useSpring(() => ({
         from: { opacity: 0, },
         to: { opacity: 1, },
-        config: { ...{duration: 600}, ...config.wobbly },
+        config: { ...{ duration: 600 }, ...config.wobbly },
     }));
-    // const styles = useSpring({
-    //     from: { opacity: 0, },
-    //     to: { opacity: 1, },
-    // });
     return (
         <form id="test" className="pt-6 pb-4 text-sm">
             <a.div style={styles}>
@@ -66,7 +62,12 @@ function LoginForm({ setShowBabba }: { setShowBabba: React.Dispatch<React.SetSta
 
             {/* Submit */}
             <div className="flex justify-end">
-                <button className="btn" onClick={(e) => { e.preventDefault(); setShowBabba((prev) => !prev); }}>Login</button>
+                <button className="btn" onClick={(e) => {
+                    e.preventDefault();
+                    api.start({ opacity: 0 });
+                    onLogin();
+                }}
+                >Login</button>
             </div>
         </form>
     );
@@ -90,7 +91,7 @@ function Section({ setShowBabba }: { setShowBabba: React.Dispatch<React.SetState
                     boxShadow: 'var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)',
                 } as any}
             >
-                <LoginForm setShowBabba={setShowBabba} />
+                <LoginForm onLogin={() => setShowBabba((prev) => !prev)} />
             </section>
         </a.div>
     );
