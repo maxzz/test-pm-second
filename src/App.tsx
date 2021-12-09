@@ -38,31 +38,31 @@ function Header() {
     );
 }
 
-//username: string, setUsername: (value: string | ((val: string) => string)) => void, password: string, setPassword: (value: string | ((val: string) => string)) => void, setShowBabba: React.Dispatch<React.SetStateAction<boolean>>
-function LoginForm({setShowBabba}: {setShowBabba: React.Dispatch<React.SetStateAction<boolean>>}) {
+function LoginForm({ setShowBabba }: { setShowBabba: React.Dispatch<React.SetStateAction<boolean>>; }) {
     const [username, setUsername] = useLocalStorage('pm-test-2-username', 'maxzz');
     const [password, setPassword] = useLocalStorage('pm-test-2-password', '123456');
+    return (
+        <div className="max-w-sm mx-auto" style={{ boxShadow: '0 0 20px 7px rgba(255, 255, 255, .3)' }}>
+            <section className="px-4 py-3 mt-4 bg-purple-200 rounded-lg border shadow-sm ring-2 ring-purple-900 ring-offset-1 ring-offset-purple-600"
+                style={{ '--tw-ring-offset-color': '#fff', boxShadow: 'var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)' } as any}
+            >
+                <form id="test">
+                    {/* Username */}
+                    <div className="text-gray-600">Username</div>
+                    <input className="inp" spellCheck="false" autoComplete="email" value={username} onChange={e => setUsername(e.target.value)} />
 
-    return <div className="max-w-sm mx-auto" style={{ boxShadow: '0 0 20px 7px rgba(255, 255, 255, .3)' }}>
-        <section className="px-4 py-3 mt-4 bg-purple-200 rounded-lg border shadow-sm ring-2 ring-purple-900 ring-offset-1 ring-offset-purple-600"
-            style={{ '--tw-ring-offset-color': '#fff', boxShadow: 'var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)' } as any}
-        >
-            <form id="test">
-                {/* Username */}
-                <div className="text-gray-600">Username</div>
-                <input className="inp" spellCheck="false" autoComplete="email" value={username} onChange={e => setUsername(e.target.value)} />
+                    {/* Password */}
+                    <div className="text-gray-600">Password</div>
+                    <input className="inp" spellCheck="false" autoComplete="password" value={password} onChange={e => setPassword(e.target.value)} type="password" />
 
-                {/* Password */}
-                <div className="text-gray-600">Password</div>
-                <input className="inp" spellCheck="false" autoComplete="password" value={password} onChange={e => setPassword(e.target.value)} type="password" />
-
-                {/* Submit */}
-                <div className="flex justify-end">
-                    <button className="btn" onClick={(e) => { e.preventDefault(); setShowBabba((prev) => !prev); } }>Login</button>
-                </div>
-            </form>
-        </section>
-    </div>;
+                    {/* Submit */}
+                    <div className="flex justify-end">
+                        <button className="btn" onClick={(e) => { e.preventDefault(); setShowBabba((prev) => !prev); }}>Login</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    );
 }
 
 function App() {
@@ -79,12 +79,8 @@ function App() {
 
     return (
         <div className="App bg-purple-900 h-screen bg-hero-pattern">
-            {/* Header */}
             <Header />
-
-            {showBabba && <GhostBubba></GhostBubba>}
-
-            {/* Login form itself */}
+            {showBabba && <GhostBubba />}
             <LoginForm setShowBabba={setShowBabba} />
             {/* <GhostDeartyDeeds /> */}
         </div>
