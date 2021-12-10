@@ -74,7 +74,7 @@ function LoginForm({ logged, onLogin }: { logged: boolean; onLogin: () => void; 
                     e.preventDefault();
                     api.start({
                         opacity: 0,
-                        config: {duration: 200,},
+                        config: { duration: 200, },
                         onRest: onLogin
                     });
                 }}
@@ -84,11 +84,19 @@ function LoginForm({ logged, onLogin }: { logged: boolean; onLogin: () => void; 
     );
 }
 
-export function GhostBubba() {
+export function GhostBabba() {
+    const pathRef = React.useRef<SVGPathElement>(null);
+    const [pathLen, setPathLen] = React.useState(0);
+    React.useEffect(() => {
+        if (pathRef.current) {
+            setPathLen(pathRef.current.getTotalLength());
+            console.log({pathLen: pathLen});
+        }
+    }, [pathRef.current]);
     return (
         <div className="relative z-10">
             <div className="absolute top-4 right-64 w-32 h-32 text-purple-900">
-                <IconGhostBubba className="transform scale-x-[-1] fill-[red]" />
+                <IconGhostBubba ref={pathRef} className="transform scale-x-[-1] fill-[red]" />
             </div>
         </div>
     );
@@ -132,7 +140,7 @@ function App() {
         <div className="App bg-purple-900 h-screen bg-hero-pattern">
             <Header />
             {/* {showBabba && <GhostBubba />} */}
-            {<GhostBubba />}
+            {<GhostBabba />}
             {!showBabba && <Section showBabba={showBabba} setShowBabba={setShowBabba} />}
             {/* <GhostDeartyDeeds /> */}
         </div>
