@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build_w_checks": "tsc && vite build",
+    "build": "vite build",
     "serve": "vite preview",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d dist"
