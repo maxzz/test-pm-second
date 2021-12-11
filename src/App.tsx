@@ -3,6 +3,7 @@ import './App.css';
 import useLocalStorage from './hooks/useLocalStorage';
 import { IconGhostBubba, GhostDeartyDeeds, PhUserCircleDuotone } from './components/Icons';
 import { a, config, useSpring } from '@react-spring/web';
+import { CharacterGhostBabba } from './components/CharacterGhostBabba';
 
 function Header() {
     return (
@@ -140,7 +141,8 @@ function App() {
         <div className="App bg-purple-900 h-screen bg-hero-pattern">
             <Header />
             {/* {showBabba && <GhostBubba />} */}
-            {<GhostBabba />}
+            {/* {<GhostBabba />} */}
+            {<CharacterGhostBabba />}
             {!showBabba && <Section showBabba={showBabba} setShowBabba={setShowBabba} />}
             {/* <GhostDeartyDeeds /> */}
         </div>
