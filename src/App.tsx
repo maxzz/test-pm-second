@@ -142,7 +142,7 @@ function App() {
             <Header />
             {/* {showBabba && <GhostBubba />} */}
             {/* {<GhostBabba />} */}
-            {<CharacterGhostBabba />}
+            {<CharacterGhostBabba show={showBabba} />}
             {!showBabba && <Section showBabba={showBabba} setShowBabba={setShowBabba} />}
             {/* <GhostDeartyDeeds /> */}
         </div>
