@@ -130,19 +130,25 @@ function Section({ showBabba, setShowBabba }: { showBabba: boolean; setShowBabba
 function App() {
     const [showBabba, setShowBabba] = useState(false);
 
-    useEffect(() => {
-        if (showBabba) {
-            let timeout = setTimeout(() => setShowBabba(false), 1000);
-            return () => clearTimeout(timeout);
-        }
-    }, [showBabba]);
+    // useEffect(() => {
+    //     if (showBabba) {
+    //         let timeout = setTimeout(() => setShowBabba(false), 4000);
+    //         return () => clearTimeout(timeout);
+    //     }
+    // }, [showBabba]);
+
+    const onRest = () => {
+        console.log('done');
+        setShowBabba(false);
+    }
 
     return (
         <div className="App bg-purple-900 h-screen bg-hero-pattern">
             <Header />
             {/* {showBabba && <GhostBubba />} */}
             {/* {<GhostBabba />} */}
-            {<CharacterGhostBabba show={showBabba} />}
+            {<CharacterGhostBabba show={showBabba} onRest={onRest} />}
+            {/* {<CharacterGhostBabba show={true} />} */}
             {!showBabba && <Section showBabba={showBabba} setShowBabba={setShowBabba} />}
             {/* <GhostDeartyDeeds /> */}
         </div>
