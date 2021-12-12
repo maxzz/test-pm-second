@@ -138,7 +138,7 @@ function App() {
     }, [showBabba]);
 
     return (
-        <div className="App bg-purple-900 h-screen _bg-hero-pattern app-bkg">
+        <div className="App bg-purple-900 h-screen bg-hero-pattern">
             <Header />
             {/* {showBabba && <GhostBubba />} */}
             {/* {<GhostBabba />} */}
