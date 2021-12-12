@@ -23,8 +23,11 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
         config: {
             duration: show ? 1000 : 200,
             //delay: show ? 2000 : 0,
-            easing: function quadInOut(t) {
-                return ((t *= 2) <= 1 ? t * t : --t * (2 - t) + 1) / 2;
+            // easing: function quadInOut(t) {
+            //     return ((t *= 2) <= 1 ? t * t : --t * (2 - t) + 1) / 2;
+            // }
+            easing: function cubicOut(t) {
+                return --t * t * t + 1;
             }
         },
         onRest: () => show && onRest && onRest()
