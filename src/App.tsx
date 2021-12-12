@@ -140,8 +140,7 @@ function App() {
     }, [showBabba]);
 
     return (
-        // <div className="App bg-purple-900 h-screen bg-hero-pattern">
-        <div className="App bg-purple-900 h-screen" style={{backgroundImage: `url(${bkg})`}}>
+        <div className="App bg-purple-900 h-screen bg-hero-pattern">
             <Header />
             {/* {showBabba && <GhostBubba />} */}
             {/* {<GhostBabba />} */}
