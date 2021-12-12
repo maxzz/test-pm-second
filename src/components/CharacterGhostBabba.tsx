@@ -1,9 +1,8 @@
 import React from 'react';
 import { a, useSpring } from '@react-spring/web';
 
-function calcAllLength(el: Element | undefined, selector: string) {
-    const els = el ? [...el.querySelectorAll<SVGGeometryElement>(selector)] : [];
-    return els.map((el) => Math.ceil(el.getTotalLength()));
+function calcAllLength<T extends SVGGeometryElement>(root: T | undefined, selector: string): number[] {
+    return (root ? [...root.querySelectorAll<SVGGeometryElement>(selector)] : []).map((el) => Math.ceil(el.getTotalLength()));
 }
 
 const paths = [
@@ -14,10 +13,11 @@ const paths = [
     "M499.34 362.09c-17.53-5.38-29-19.13-31.29-35-11.31 27.47-2.26 55.24 20.38 62.19s50.66-9.75 62.29-37.39l.48-1.21c-13.65 12.02-33.59 17.01-51.86 11.41ZM715.14 425.93a348.48 348.48 0 0 0 32.13-155.72M312.29 246.06a162 162 0 0 0-26.39 96.58M349.09 415.26q-4.41-6.88-8.47-14a248.3 248.3 0 0 1-17.37-36.41c-12.34-33.15-13.56-70.11-5.22-104.36a173.81 173.81 0 0 1 6.69-21.43M738.38 268.66c-.79 4.4-1.2 8.48-3.37 12.33a34.59 34.59 0 0 0-2.49 6.8q-2.32 7.36-5 14.62-5.35 14.49-12 28.44A337.85 337.85 0 0 1 643 430.12a327 327 0 0 1-47.11 36.94",
 ];
 
+const lengths = [1924, 399, 185, 172, 957];
 
 export function CharacterGhostBabba({ show }: { show: boolean; }) {
     const pathRef = React.useRef<SVGPathElement>(null);
-    const rootRef = React.useRef<any>(null);
+    const rootRef = React.useRef(null);
     const [pathLen, setPathLen] = React.useState(1924);
 
     React.useEffect(() => {
@@ -25,7 +25,6 @@ export function CharacterGhostBabba({ show }: { show: boolean; }) {
             //setPathLen(pathRef.current.getTotalLength());
 
             const lengths = calcAllLength(rootRef.current, 'path');
-
             console.log('lengths', pathLen, lengths);
         }
     }, [pathRef.current]);
@@ -45,8 +44,8 @@ export function CharacterGhostBabba({ show }: { show: boolean; }) {
                     <a.path
                         ref={pathRef}
                         style={{
-                            strokeDashoffset: styles.x,
-                            //strokeDashoffset: (console.log('xd', styles.x), styles.x),
+                            // strokeDashoffset: styles.x,
+                            strokeDashoffset: (console.log('xd', styles.x.get()), styles.x),
                             //strokeDashoffset: 1200,
                             strokeDasharray: pathLen,
                             // strokeDasharray: (console.log('len', pathLen), pathLen),
