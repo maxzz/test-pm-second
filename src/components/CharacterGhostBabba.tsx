@@ -1,8 +1,8 @@
 import React from 'react';
 import { a, useSpring } from '@react-spring/web';
 
-function calcAllLength<T extends SVGGeometryElement>(root: T | undefined, selector: string): number[] {
-    return (root ? [...root.querySelectorAll<SVGGeometryElement>(selector)] : []).map((el) => Math.ceil(el.getTotalLength()));
+function calcAllLength<T extends SVGGeometryElement>(selector: string, root: T | undefined): number[] {
+    return [...(root || document).querySelectorAll<SVGGeometryElement>(selector)].map((el) => Math.ceil(el.getTotalLength()));
 }
 
 const paths = [
@@ -24,7 +24,7 @@ export function CharacterGhostBabba({ show }: { show: boolean; }) {
         if (pathRef.current && rootRef.current) {
             //setPathLen(pathRef.current.getTotalLength());
 
-            const lengths = calcAllLength(rootRef.current, 'path');
+            const lengths = calcAllLength('path', rootRef.current);
             console.log('lengths', pathLen, lengths);
         }
     }, [pathRef.current]);
