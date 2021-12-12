@@ -19,14 +19,19 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
 
     const styles = useSpring({
         from: { o: 1, stroke: 'red' },
+
         //to: { o: show ? 0 : 1 },
-        // to: React.useCallback(async (next) => {
-        //     await next({ o: show ? 0 : 1 });
-        // }, [show]),
-        to: [
-            { o: show ? 0 : 1 },
-            { color: show ? 'red' : 'white' },
-        ],
+
+        to: React.useCallback(async (next) => {
+            await next({ o: show ? 0 : 1 });
+            await next({ stroke: show ? 'red' : 'rgb(76, 29, 149)', delay: 1000 });
+        }, [show]),
+
+        // to: [
+        //     { o: show ? 0 : 1 },
+        //     { color: show ? 'red' : 'white' },
+        // ],
+
         config: {
             duration: show ? 1000 : 300,
             // easing: function quadInOut(t) {
