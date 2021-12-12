@@ -9,10 +9,7 @@ export default ({ command }) => {
         plugins: [
             reactRefresh(),
             {
-                ...url({
-                    include: ['**/*.svg'],
-                    limit: 15000,
-                }),
+                ...url(),
                 enforce: 'pre',
             },
             visualizer({

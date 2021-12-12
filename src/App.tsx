@@ -127,6 +127,8 @@ function Section({ showBabba, setShowBabba }: { showBabba: boolean; setShowBabba
     );
 }
 
+import bkg from "./assets/svg-bkg-turbulance.svg";
+
 function App() {
     const [showBabba, setShowBabba] = useState(false);
 
@@ -138,7 +140,8 @@ function App() {
     }, [showBabba]);
 
     return (
-        <div className="App bg-purple-900 h-screen bg-hero-pattern">
+        // <div className="App bg-purple-900 h-screen bg-hero-pattern">
+        <div className="App bg-purple-900 h-screen" style={{backgroundImage: `url(${bkg})`}}>
             <Header />
             {/* {showBabba && <GhostBubba />} */}
             {/* {<GhostBabba />} */}
