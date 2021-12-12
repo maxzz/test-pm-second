@@ -19,19 +19,22 @@ export function CharacterGhostBabba({ show }: { show: boolean; }) {
     const [pathLen, setPathLen] = React.useState(1924);
 
     const styles = useSpring({
-        from: { x: pathLen, o: 1 },
-        to: { x: show ? 0 : pathLen, o: show ? 0 : 1 },
+        from: { o: 1 },
+        to: { o: show ? 0 : 1 },
+        //config: {duration: 300},
     });
 
     return (
         <div className="relative z-10">
             <div className="absolute top-4 right-64 w-32 h-32 text-purple-900">
-                <svg viewBox="0 0 635 448" stroke="currentColor" strokeWidth="12" className="transform scale-x-[-1] fill-[none]" >
-                    <a.path style={{strokeDashoffset: styles.o.to({range: [0, 1], output: [0, LENS[0]]}), strokeDasharray: LENS[0]}} d={PATHS[0]} transform="translate(-166.17 -187.86)" />
-                    <a.path style={{strokeDashoffset: styles.o.to({range: [0, 1], output: [0, LENS[1]]}), strokeDasharray: LENS[1]}} d={PATHS[1]} transform="translate(-166.17 -187.86)" />
-                    <a.path style={{strokeDashoffset: styles.o.to({range: [0, 1], output: [0, LENS[2]]}), strokeDasharray: LENS[2]}} d={PATHS[2]} transform="translate(-166.17 -187.86)" />
-                    <a.path style={{strokeDashoffset: styles.o.to({range: [0, 1], output: [0, LENS[3]]}), strokeDasharray: LENS[3]}} d={PATHS[3]} transform="translate(-166.17 -187.86)" />
-                    <a.path style={{strokeDashoffset: styles.o.to({range: [0, 1], output: [0, LENS[4]]}), strokeDasharray: LENS[4]}} d={PATHS[4]} transform="translate(-166.17 -187.86)" />
+                <svg viewBox="0 0 635 448" stroke="currentColor" strokeWidth="7" className="transform scale-x-[-1] fill-[none]" >
+                    <g transform="translate(-166.17 -187.86)">
+                        <a.path style={{strokeDashoffset: styles.o.to({range: [0, 1], output: [0, LENS[0]]}), strokeDasharray: LENS[0]}} d={PATHS[0]} />
+                        <a.path style={{strokeDashoffset: styles.o.to({range: [0, 1], output: [0, LENS[1]]}), strokeDasharray: LENS[1]}} d={PATHS[1]} />
+                        <a.path style={{strokeDashoffset: styles.o.to({range: [0, 1], output: [0, LENS[2]]}), strokeDasharray: LENS[2]}} d={PATHS[2]} />
+                        <a.path style={{strokeDashoffset: styles.o.to({range: [0, 1], output: [0, LENS[3]]}), strokeDasharray: LENS[3]}} d={PATHS[3]} />
+                        <a.path style={{strokeDashoffset: styles.o.to({range: [0, 1], output: [0, LENS[4]]}), strokeDasharray: LENS[4]}} d={PATHS[4]} />
+                    </g>
                 </svg>
             </div>
         </div>
