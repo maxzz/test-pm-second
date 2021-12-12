@@ -22,7 +22,7 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
         //to: { o: show ? 0 : 1 },
         to: React.useCallback(async (next) => {
             await next({ o: show ? 0 : 1 });
-        }, []),
+        }, [show]),
         config: {
             duration: show ? 1000 : 300,
             // easing: function quadInOut(t) {
