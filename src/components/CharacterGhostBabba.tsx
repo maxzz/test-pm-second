@@ -30,8 +30,8 @@ export function CharacterGhostBabba({ show }: { show: boolean; }) {
     }, [pathRef.current]);
 
     const styles = useSpring({
-        from: { x: pathLen },
-        to: { x: show ? 0 : pathLen },
+        from: { x: pathLen, o: 1 },
+        to: { x: show ? 0 : pathLen, o: show ? 0 : 1 },
     });
 
     //console.log(pathLen, 'x', styles.x);
@@ -39,7 +39,7 @@ export function CharacterGhostBabba({ show }: { show: boolean; }) {
     return (
         <div className="relative z-10">
             <div className="absolute top-4 right-64 w-32 h-32 text-purple-900">
-                <svg ref={rootRef} viewBox="0 0 635 448" stroke="currentColor" strokeWidth="5" className="transform scale-x-[-1] fill-[none]" >
+                <svg ref={rootRef} viewBox="0 0 635 448" stroke="currentColor" strokeWidth="12" className="transform scale-x-[-1] fill-[none]" >
                     {/* {console.log(pathLen, 'runx', styles.x)} */}
                     <a.path
                         ref={pathRef}
@@ -52,10 +52,10 @@ export function CharacterGhostBabba({ show }: { show: boolean; }) {
                         }}
                         d={paths[0]} transform="translate(-166.17 -187.86)"
                     />
-                    <path d={paths[1]} transform="translate(-166.17 -187.86)" />
-                    <path d={paths[2]} transform="translate(-166.17 -187.86)" />
-                    <path d={paths[3]} transform="translate(-166.17 -187.86)" />
-                    <path d={paths[4]} transform="translate(-166.17 -187.86)" />
+                    <a.path style={{strokeDashoffset: styles.o.to({range: [0, 1], output: [0, lengths[1]]}), strokeDasharray: lengths[1]}} d={paths[1]} transform="translate(-166.17 -187.86)" />
+                    <a.path style={{strokeDashoffset: styles.o.to({range: [0, 1], output: [0, lengths[2]]}), strokeDasharray: lengths[2]}} d={paths[2]} transform="translate(-166.17 -187.86)" />
+                    <a.path style={{strokeDashoffset: styles.o.to({range: [0, 1], output: [0, lengths[3]]}), strokeDasharray: lengths[3]}} d={paths[3]} transform="translate(-166.17 -187.86)" />
+                    <a.path style={{strokeDashoffset: styles.o.to({range: [0, 1], output: [0, lengths[4]]}), strokeDasharray: lengths[4]}} d={paths[4]} transform="translate(-166.17 -187.86)" />
                 </svg>
             </div>
         </div>
