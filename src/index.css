@@ -25,3 +25,7 @@
             transform active:scale-105;
     }
 }
+
+.app-bkg {
+    background-image: url("./assets/svg-bkg-turbulance.svg");
+}
