@@ -24,7 +24,7 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
 
         to: React.useCallback(async (next) => {
             await next({ o: show ? 0 : 1 });
-            await next({ stroke: show ? 'red' : 'rgb(76, 29, 149)', delay: 1000 });
+            await next({ stroke: show ? 'red' : 'rgb(76, 29, 149)', delay: show ? 5000 : 1000 });
         }, [show]),
 
         // to: [
