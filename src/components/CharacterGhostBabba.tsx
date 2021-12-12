@@ -21,8 +21,7 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
         from: { o: 1 },
         to: { o: show ? 0 : 1 },
         config: {
-            duration: show ? 1000 : 200,
-            //delay: show ? 2000 : 0,
+            duration: show ? 1000 : 300,
             // easing: function quadInOut(t) {
             //     return ((t *= 2) <= 1 ? t * t : --t * (2 - t) + 1) / 2;
             // }
@@ -30,6 +29,7 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
                 return --t * t * t + 1;
             }
         },
+        delay: show ? 200 : 400,
         onRest: () => show && onRest && onRest()
     });
 
