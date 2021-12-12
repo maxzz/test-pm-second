@@ -15,13 +15,19 @@ const PATHS = [
 
 const LENS = [1924, 399, 185, 172, 957];
 
-export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: () => void }) {
+export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: () => void; }) {
 
     const styles = useSpring({
         from: { o: 1 },
         to: { o: show ? 0 : 1 },
-        config: { duration: 2300 },
-        onRest: () => onRest && onRest()
+        config: {
+            duration: show ? 1000 : 200,
+            //delay: show ? 2000 : 0,
+            easing: function quadInOut(t) {
+                return ((t *= 2) <= 1 ? t * t : --t * (2 - t) + 1) / 2;
+            }
+        },
+        onRest: () => show && onRest && onRest()
     });
 
     return (
