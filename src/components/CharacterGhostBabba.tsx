@@ -27,8 +27,8 @@ export function CharacterGhostBabba({ show }: { show: boolean; }) {
     return (
         <div className="relative z-10">
             <div className="absolute top-4 right-64 w-32 h-32 text-purple-900">
-                <svg viewBox="0 0 635 448" stroke="currentColor" strokeWidth="7" className="transform scale-x-[-1] fill-[none]" >
-                    <g transform="translate(-166.17 -187.86)">
+                <svg viewBox="0 0 680 478" stroke="currentColor" strokeWidth="7" className="transform scale-x-[-1] fill-[none]" >
+                    <g transform="translate(-150 -167)">
                         <a.path style={{strokeDashoffset: styles.o.to({range: [0, 1], output: [0, LENS[0]]}), strokeDasharray: LENS[0]}} d={PATHS[0]} />
                         <a.path style={{strokeDashoffset: styles.o.to({range: [0, 1], output: [0, LENS[1]]}), strokeDasharray: LENS[1]}} d={PATHS[1]} />
                         <a.path style={{strokeDashoffset: styles.o.to({range: [0, 1], output: [0, LENS[2]]}), strokeDasharray: LENS[2]}} d={PATHS[2]} />
