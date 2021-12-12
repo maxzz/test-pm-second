@@ -19,7 +19,10 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
 
     const styles = useSpring({
         from: { o: 1 },
-        to: { o: show ? 0 : 1 },
+        //to: { o: show ? 0 : 1 },
+        to: React.useCallback(async (next) => {
+            await next({ o: show ? 0 : 1 });
+        }, []),
         config: {
             duration: show ? 1000 : 300,
             // easing: function quadInOut(t) {
