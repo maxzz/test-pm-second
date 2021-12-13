@@ -1,6 +1,6 @@
 import React from 'react';
 import { a, useSpring } from '@react-spring/web';
-import { easeCubicOut } from 'd3-ease';
+import { easeCubicIn, easeCubicOut } from 'd3-ease';
 
 export function calcAllLength<T extends SVGGeometryElement>(selector: string, root: T | undefined): number[] {
     return [...(root || document).querySelectorAll<SVGGeometryElement>(selector)].map((el) => Math.ceil(el.getTotalLength()));
@@ -41,7 +41,7 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
             { o: show ? 0 : 1, config: { easing: easeCubicOut, duration: show ? 600 : 300, }, },
             { stroke: show ? 'red' : 'rgb(76, 29, 149)', delay: 200 },
             //{ delay: 2300 },
-            { transform: `scale(${show ? 0 : 1})`, config: { easing: easeCubicOut, duration: 600 } },
+            { transform: `scale(${show ? 0 : 1})`, config: { easing: easeCubicIn, duration: 600 } },
         ],
 
         // to: [
