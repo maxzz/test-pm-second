@@ -60,7 +60,9 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
         <div className="relative z-10">
             <div className="absolute top-4 right-64 w-32 h-32 text-purple-900">
                 <svg viewBox="0 0 680 478" stroke="currentColor" strokeWidth="7" className="transform scale-x-[-1] fill-[none]" >
-                    {console.log('st', Object.entries(styles).map(([key, val]) => [key, val.get()]))}
+
+                    {console.log('st', Object.entries(styles).map(([key, val]) => `${key}: ${val.get()}`))}
+
                     <a.g style={{ transform: styles.transform, transformOrigin: 'bottom right' }}>
                         <g transform="translate(-150 -167)">
                             {PATHS.map((path, idx) => (
