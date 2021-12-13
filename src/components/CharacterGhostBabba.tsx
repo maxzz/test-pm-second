@@ -61,18 +61,21 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
             <div className="absolute top-4 right-64 w-32 h-32 text-purple-900">
                 <svg viewBox="0 0 680 478" stroke="currentColor" strokeWidth="7" className="transform scale-x-[-1] fill-[none]" >
 
-                    {console.log('st', Object.entries(styles).map(([key, val]) => `${key}: ${val.get()}`))}
+                    {/* {console.log('render', Object.entries(styles).map(([key, val]) => `${key}: ${val.get()}`))} */}
 
                     <a.g style={{ transform: styles.transform, transformOrigin: 'bottom right' }}>
                         <g transform="translate(-150 -167)">
                             {PATHS.map((path, idx) => (
-                                <a.path
-                                    key={idx}
-                                    stroke={styles.stroke}
-                                    style={{
-                                        strokeDashoffset: styles.o.to({ range: [0, 1], output: [0, LENS[idx]] }),
-                                        strokeDasharray: LENS[idx],
-                                    }} d={path} />
+                                <React.Fragment key={idx}>
+                                    {console.log('render', Object.entries(styles).map(([key, val]) => `${key}: ${val.get()}`))}
+                                    <a.path
+                                        key={idx}
+                                        stroke={styles.stroke}
+                                        style={{
+                                            strokeDashoffset: styles.o.to({ range: [0, 1], output: [0, LENS[idx]] }),
+                                            strokeDasharray: LENS[idx],
+                                        }} d={path} />
+                                </React.Fragment>
                             ))}
 
                             {/* 
