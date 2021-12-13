@@ -1,8 +1,16 @@
 import React from 'react';
 import { a, useSpring } from '@react-spring/web';
 
-function calcAllLength<T extends SVGGeometryElement>(selector: string, root: T | undefined): number[] {
+export function calcAllLength<T extends SVGGeometryElement>(selector: string, root: T | undefined): number[] {
     return [...(root || document).querySelectorAll<SVGGeometryElement>(selector)].map((el) => Math.ceil(el.getTotalLength()));
+}
+
+export function quadInOut(t: number) {
+    return ((t *= 2) <= 1 ? t * t : --t * (2 - t) + 1) / 2;
+}
+
+export function cubicOut(t: number) {
+    return --t * t * t + 1;
 }
 
 const PATHS = [
@@ -25,7 +33,7 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
         to: React.useCallback(async (next) => {
             await next({ o: show ? 0 : 1 });
             await next({ stroke: show ? 'red' : 'rgb(76, 29, 149)', delay: 1000 });
-            await next({ transform: `scale(${show ? 0 : 1})` });
+            await next({ transform: `scale(${show ? 0 : 1})`, config: { easing: cubicOut, duration: 5000 } });
         }, [show]),
 
         // to: [
@@ -33,15 +41,7 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
         //     { color: show ? 'red' : 'white' },
         // ],
 
-        config: {
-            duration: show ? 1000 : 300,
-            // easing: function quadInOut(t) {
-            //     return ((t *= 2) <= 1 ? t * t : --t * (2 - t) + 1) / 2;
-            // }
-            easing: function cubicOut(t) {
-                return --t * t * t + 1;
-            }
-        },
+        config: { easing: cubicOut, duration: show ? 1000 : 300, },
         delay: show ? 200 : 400,
         onRest: () => show && onRest && onRest()
     });
