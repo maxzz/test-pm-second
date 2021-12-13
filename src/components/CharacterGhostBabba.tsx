@@ -30,11 +30,17 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
 
         //to: { o: show ? 0 : 1 },
 
-        to: React.useCallback(async (next) => {
-            await next({ o: show ? 0 : 1, config: { easing: cubicOut, duration: show ? 600 : 300, }, });
-            await next({ stroke: show ? 'red' : 'rgb(76, 29, 149)', delay: 200 });
-            await next({ transform: `scale(${show ? 0 : 1})`, config: { easing: cubicOut, duration: 1000 } });
-        }, [show]),
+        // to: React.useCallback(async (next) => {
+        //     await next({ o: show ? 0 : 1, config: { easing: cubicOut, duration: show ? 600 : 300, }, });
+        //     await next({ stroke: show ? 'red' : 'rgb(76, 29, 149)', delay: 200 });
+        //     await next({ transform: `scale(${show ? 0 : 1})`, config: { easing: cubicOut, duration: 1000 } });
+        // }, [show]),
+
+        to: [
+            { o: show ? 0 : 1, config: { easing: cubicOut, duration: show ? 600 : 300, }, },
+            { stroke: show ? 'red' : 'rgb(76, 29, 149)', delay: 200 },
+            { transform: `scale(${show ? 0 : 1})`, config: { easing: cubicOut, duration: 1000 } },
+        ],
 
         // to: [
         //     { o: show ? 0 : 1 },
@@ -49,7 +55,7 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
     return (
         <div className="relative z-10">
             <div className="absolute top-4 right-64 w-32 h-32 text-purple-900">
-                <svg viewBox="0 0 680 478" stroke="currentColor" strokeWidth="7" className="transform scale-x-[-1] fill-[none] bg-red-600/20" >
+                <svg viewBox="0 0 680 478" stroke="currentColor" strokeWidth="7" className="transform scale-x-[-1] fill-[none]" >
                     {console.log('st', styles)}
                     <a.g style={{ transform: styles.transform, transformOrigin: 'bottom right' }}>
                         <g transform="translate(-150 -167)">
