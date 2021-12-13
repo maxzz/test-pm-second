@@ -31,8 +31,8 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
         //to: { o: show ? 0 : 1 },
 
         to: React.useCallback(async (next) => {
-            await next({ o: show ? 0 : 1, config: { easing: cubicOut, duration: show ? 2600 : 300, }, });
-            await next({ stroke: show ? 'red' : 'rgb(76, 29, 149)', delay: 2000 });
+            await next({ o: show ? 0 : 1, config: { easing: cubicOut, duration: show ? 600 : 300, }, });
+            await next({ stroke: show ? 'red' : 'rgb(76, 29, 149)', delay: 200 });
             await next({ transform: `scale(${show ? 0 : 1})`, config: { easing: cubicOut, duration: 1000 } });
         }, [show]),
 
@@ -49,9 +49,9 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
     return (
         <div className="relative z-10">
             <div className="absolute top-4 right-64 w-32 h-32 text-purple-900">
-                <svg viewBox="0 0 680 478" stroke="currentColor" strokeWidth="7" className="transform scale-x-[-1] fill-[none]" >
+                <svg viewBox="0 0 680 478" stroke="currentColor" strokeWidth="7" className="transform scale-x-[-1] fill-[none] bg-red-600/20" >
                     {console.log('st', styles)}
-                    <a.g style={{ transform: styles.transform }}>
+                    <a.g style={{ transform: styles.transform, transformOrigin: 'bottom right' }}>
                         <g transform="translate(-150 -167)">
                             <a.path stroke={styles.stroke} style={{ strokeDashoffset: styles.o.to({ range: [0, 1], output: [0, LENS[0]] }), strokeDasharray: LENS[0], }} d={PATHS[0]} />
                             <a.path stroke={styles.stroke} style={{ strokeDashoffset: styles.o.to({ range: [0, 1], output: [0, LENS[1]] }), strokeDasharray: LENS[1], }} d={PATHS[1]} />
