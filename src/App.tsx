@@ -147,8 +147,10 @@ function App() {
             <Header />
             {/* {showBabba && <GhostBubba />} */}
             {/* {<GhostBabba />} */}
+
             {<CharacterGhostBabba show={showBabba} onRest={onRest} />}
             {/* {<CharacterGhostBabba show={true} />} */}
+
             {!showBabba && <Section showBabba={showBabba} setShowBabba={setShowBabba} />}
             {/* <GhostDeartyDeeds /> */}
         </div>
