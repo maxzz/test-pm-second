@@ -18,14 +18,14 @@ const LENS = [1924, 399, 185, 172, 957];
 export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: () => void; }) {
 
     const styles = useSpring({
-        from: { o: 1, stroke: 'red', scale: 1 },
+        from: { o: 1, stroke: 'red', transform: 'scale(1)' },
 
         //to: { o: show ? 0 : 1 },
 
         to: React.useCallback(async (next) => {
             await next({ o: show ? 0 : 1 });
             await next({ stroke: show ? 'red' : 'rgb(76, 29, 149)', delay: 1000 });
-            await next({ scale: show ? 0 : 1 });
+            await next({ transform: `scale(${show ? 0 : 1})` });
         }, [show]),
 
         // to: [
@@ -51,7 +51,7 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
             <div className="absolute top-4 right-64 w-32 h-32 text-purple-900">
                 <svg viewBox="0 0 680 478" stroke="currentColor" strokeWidth="7" className="transform scale-x-[-1] fill-[none]" >
                     {console.log('st', styles)}
-                    <a.g style={{ transform: `scale(${styles.scale})` }}>
+                    <a.g style={{ transform: styles.transform }}>
                         <g transform="translate(-150 -167)">
                             <a.path stroke={styles.stroke} style={{ strokeDashoffset: styles.o.to({ range: [0, 1], output: [0, LENS[0]] }), strokeDasharray: LENS[0], }} d={PATHS[0]} />
                             <a.path stroke={styles.stroke} style={{ strokeDashoffset: styles.o.to({ range: [0, 1], output: [0, LENS[1]] }), strokeDasharray: LENS[1], }} d={PATHS[1]} />
