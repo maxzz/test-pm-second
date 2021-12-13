@@ -31,9 +31,9 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
         //to: { o: show ? 0 : 1 },
 
         to: React.useCallback(async (next) => {
-            await next({ o: show ? 0 : 1 });
-            await next({ stroke: show ? 'red' : 'rgb(76, 29, 149)', delay: 1000 });
-            await next({ transform: `scale(${show ? 0 : 1})`, config: { easing: cubicOut, duration: 5000 } });
+            await next({ o: show ? 0 : 1, config: { easing: cubicOut, duration: show ? 2600 : 300, }, });
+            await next({ stroke: show ? 'red' : 'rgb(76, 29, 149)', delay: 2000 });
+            await next({ transform: `scale(${show ? 0 : 1})`, config: { easing: cubicOut, duration: 1000 } });
         }, [show]),
 
         // to: [
@@ -41,8 +41,8 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
         //     { color: show ? 'red' : 'white' },
         // ],
 
-        config: { easing: cubicOut, duration: show ? 1000 : 300, },
-        delay: show ? 200 : 400,
+        //config: { easing: cubicOut, duration: show ? 600 : 300, },
+        //delay: show ? 200 : 400,
         onRest: () => show && onRest && onRest()
     });
 
