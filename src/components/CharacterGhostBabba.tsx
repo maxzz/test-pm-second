@@ -40,6 +40,7 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
             { o: show ? 0 : 1, config: { easing: cubicOut, duration: show ? 600 : 300, }, },
             { stroke: show ? 'red' : 'rgb(76, 29, 149)', delay: 200 },
             { transform: `scale(${show ? 0 : 1})`, config: { easing: cubicOut, duration: 1000 } },
+            { delay: 3000 },
         ],
 
         // to: [
