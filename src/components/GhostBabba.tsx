@@ -13,7 +13,7 @@ export function GhostBabba() {
 
     return (
         <div className="relative z-10">
-            <div className="absolute top-4 right-64 w-32 h-32 text-purple-900">
+            <div className="absolute top-4 right-64 w-32 h-32 text-indigo-900">
                 <IconGhostBubba ref={pathRef} className="transform scale-x-[-1] fill-[red]" />
             </div>
         </div>

@@ -49,7 +49,7 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
 
     return (
         <div className="relative z-10">
-            <div className="absolute top-4 right-64 w-32 h-32 text-purple-900">
+            <div className="absolute top-4 right-64 w-32 h-32 text-indigo-900">
                 <svg viewBox="0 0 680 478" stroke="currentColor" strokeWidth="7" className="transform scale-x-[-1] fill-[none]" >
                     {/* {console.log('render', Object.entries(styles).map(([key, val]) => `${key}: ${val.get()}`))} */}
 

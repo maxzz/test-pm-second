@@ -21,7 +21,7 @@ function App() {
     }
 
     return (
-        <div className="App bg-purple-900 h-screen bg-hero-pattern flex flex-col">
+        <div className="App bg-indigo-900 h-screen bg-hero-pattern flex flex-col">
             <Header />
             <IconGhost className="w-32 h-32 text-black" strokeWidth={.7} />
 
