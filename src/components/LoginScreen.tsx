@@ -74,8 +74,8 @@ const formStyles = {
 
 export function LoginScreen({ showBabba, setShowBabba }: { showBabba: boolean; setShowBabba: React.Dispatch<React.SetStateAction<boolean>>; }) {
     const [styles, api] = useSpring(() => ({
-        from: { scaleX: 0, },
-        to: { scaleX: 1, },
+        from: { scaleY: .7, },
+        to: { scaleY: 1, },
         config: { ...config.wobbly },
     }));
     return (
