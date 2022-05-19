@@ -23,7 +23,7 @@ function App() {
     return (
         <div className="App bg-indigo-900 h-screen bg-hero-pattern flex flex-col">
             <Header />
-            <IconGhost className="w-32 h-32 text-black" strokeWidth={.7} />
+            <IconGhost className="w-32 h-32 text-indigo-900" strokeWidth={.7} />
 
             <div className="flex-1 flex items-center justify-center">
                 {/* {showBabba && <GhostBubba />} */}

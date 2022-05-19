@@ -17,7 +17,7 @@ function LoginForm({ logged, onLogin }: { logged: boolean; onLogin: () => void; 
         }
     }, [logged]);
     return (
-        <form id="test" className="pt-6 pb-4 text-sm">
+        <form id="test" className="pt-6 pb-4 text-sm w-56">
             <a.div style={styles}>
                 <IconUser className="w-16 h-16 mb-2 text-indigo-400" />
             </a.div>
@@ -53,12 +53,9 @@ export function LoginScreen({ showBabba, setShowBabba }: { showBabba: boolean; s
         config: { ...config.wobbly },
     }));
     return (
-        <a.div
-            className="max-w-xs"
-            style={{ ...styles, ...{ boxShadow: '0 0 20px 7px rgba(255, 255, 255, .3)' } }}
-        >
+        <a.div style={{ ...styles, ...{ boxShadow: '#fff1ce4a 0px 0px 15px 6px' } }}>
             <section
-                className="px-4 py-3 mt-4 bg-indigo-200 rounded-lg border shadow-sm ring-2 ring-indigo-900 ring-offset-1 ring-offset-indigo-600"
+                className="px-4 py-3 bg-indigo-200 rounded-lg border shadow-sm ring-2 ring-indigo-900 ring-offset-1 ring-offset-indigo-600"
                 style={{
                     '--tw-ring-offset-color': '#fff',
                     boxShadow: 'var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)',
