@@ -22,9 +22,7 @@ function InputField({ value, setValue, isPassword = false }: { value: string; se
     );
 }
 
-function LoginForm({ logged, onLogin }: { logged: boolean; onLogin: () => void; }) {
-    const [username, setUsername] = useLocalStorage('pm-test-2-username', 'maxzz');
-    const [password, setPassword] = useLocalStorage('pm-test-2-password', '123456');
+function FormLogo({ logged }: { logged: boolean; }) {
     const [styles, api] = useSpring(() => ({
         from: { opacity: 0, },
         to: { opacity: 1, },
@@ -36,37 +34,43 @@ function LoginForm({ logged, onLogin }: { logged: boolean; onLogin: () => void; 
         }
     }, [logged]);
     return (
-        <form id="test" className="px-4 py-8 text-sm w-56">
-            <a.div className="mb-4 pb-2 border-indigo-700 border-b" style={styles}>
-                <IconUser className="w-16 h-16 mb-2 text-indigo-400" />
-            </a.div>
+        <a.div className="mb-4 pb-2 border-indigo-700 border-b" style={styles}>
+            <IconUser className="w-16 h-16 mb-2 text-indigo-400" />
+        </a.div>
+    );
+}
+
+function LoginForm({ logged, onLogin }: { logged: boolean; onLogin: () => void; }) {
+    const [username, setUsername] = useLocalStorage('pm-test-2-username', 'maxzz');
+    const [password, setPassword] = useLocalStorage('pm-test-2-password', '123456');
+    return (
+        <form id="test" className="w-64 px-4 py-8 text-sm">
+            <FormLogo logged={logged} />
 
             <InputField value={username} setValue={setUsername} />
-            <InputField value={username} setValue={setUsername} isPassword={true} />
-
-            {/* Username */}
-            {/* <div className="text-indigo-800">Username</div>
-            <input className="inp" spellCheck="false" autoComplete="email" value={username} onChange={e => setUsername(e.target.value)} /> */}
-
-            {/* Password */}
-            {/* <div className="text-indigo-800">Password</div>
-            <input className="inp" spellCheck="false" autoComplete="password" value={password} onChange={e => setPassword(e.target.value)} type="password" /> */}
+            <InputField value={password} setValue={setPassword} isPassword={true} />
 
             {/* Submit */}
             <div className="flex justify-end">
                 <button className="btn" onClick={(e) => {
                     e.preventDefault();
-                    api.start({
-                        opacity: 0,
-                        config: { duration: 200, },
-                        onRest: onLogin
-                    });
+                    // api.start({
+                    //     opacity: 0,
+                    //     config: { duration: 200, },
+                    //     onRest: onLogin
+                    // });
+                    onLogin();
                 }}
                 >Login</button>
             </div>
         </form>
     );
 }
+
+const formStyles = {
+    '--tw-ring-offset-color': '#fff',
+    boxShadow: 'var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)',
+} as React.CSSProperties;
 
 export function LoginScreen({ showBabba, setShowBabba }: { showBabba: boolean; setShowBabba: React.Dispatch<React.SetStateAction<boolean>>; }) {
     const [styles, api] = useSpring(() => ({
@@ -77,11 +81,8 @@ export function LoginScreen({ showBabba, setShowBabba }: { showBabba: boolean; s
     return (
         <a.div style={{ ...styles, ...{ boxShadow: '#fff1ce4a 0px 0px 15px 6px' } }}>
             <section
-                className="bg-indigo-200 rounded-lg border shadow-sm ring-2 ring-indigo-900 ring-offset-1 ring-offset-indigo-600"
-                style={{
-                    '--tw-ring-offset-color': '#fff',
-                    boxShadow: 'var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)',
-                } as any}
+                className="bg-indigo-200 rounded-lg border shadow-sm ring-2 ring-indigo-500 ring-offset-1 ring-offset-indigo-600"
+                style={formStyles}
             >
                 <LoginForm logged={showBabba} onLogin={() => setShowBabba((prev) => !prev)} />
             </section>
