@@ -1,7 +1,7 @@
 import React from "react";
 import { a, config, useSpring } from "@react-spring/web";
 import { useLocalStorage } from "use-hooks";
-import { PhUserCircleDuotone } from "./Icons";
+import { IconUser } from "./UI/Icons";
 
 function LoginForm({ logged, onLogin }: { logged: boolean; onLogin: () => void; }) {
     const [username, setUsername] = useLocalStorage('pm-test-2-username', 'maxzz');
@@ -19,7 +19,7 @@ function LoginForm({ logged, onLogin }: { logged: boolean; onLogin: () => void; 
     return (
         <form id="test" className="pt-6 pb-4 text-sm">
             <a.div style={styles}>
-                <PhUserCircleDuotone className="w-16 h-16 mb-2 text-purple-400" />
+                <IconUser className="w-16 h-16 mb-2 text-purple-400" />
             </a.div>
 
             {/* Username */}
@@ -54,7 +54,7 @@ export function LoginScreen({ showBabba, setShowBabba }: { showBabba: boolean; s
     }));
     return (
         <a.div
-            className="max-w-xs mx-auto"
+            className="max-w-xs"
             style={{ ...styles, ...{ boxShadow: '0 0 20px 7px rgba(255, 255, 255, .3)' } }}
         >
             <section

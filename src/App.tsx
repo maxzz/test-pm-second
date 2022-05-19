@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import './App.css';
 import { Header } from './components/Header';
 import { LoginScreen } from './components/LoginScreen';
 import { CharacterGhostBabba } from './components/CharacterGhostBabba';
+import './App.css';
+import { IconGhost } from './components/UI/Icons';
 
 function App() {
     const [showBabba, setShowBabba] = useState(false);
@@ -20,16 +21,19 @@ function App() {
     }
 
     return (
-        <div className="App bg-purple-900 h-screen bg-hero-pattern">
+        <div className="App bg-purple-900 h-screen bg-hero-pattern flex flex-col">
             <Header />
-            {/* {showBabba && <GhostBubba />} */}
-            {/* {<GhostBabba />} */}
+            <IconGhost className="w-32 h-32 text-black" strokeWidth={.7} />
 
-            {<CharacterGhostBabba show={showBabba} onRest={onRest} />}
-            {/* {<CharacterGhostBabba show={true} />} */}
-
-            {!showBabba && <LoginScreen showBabba={showBabba} setShowBabba={setShowBabba} />}
-            {/* <GhostDeartyDeeds /> */}
+            <div className="flex-1 flex items-center justify-center">
+                {/* {showBabba && <GhostBubba />} */}
+                {/* {<GhostBabba />} */}
+                {<CharacterGhostBabba show={showBabba} onRest={onRest} />}
+                {/* {<CharacterGhostBabba show={true} />} */}
+                
+                {!showBabba && <LoginScreen showBabba={showBabba} setShowBabba={setShowBabba} />}
+                {/* <GhostDeartyDeeds /> */}
+            </div>
         </div>
     );
 }
