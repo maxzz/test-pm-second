@@ -4,6 +4,7 @@ import { LoginScreen } from './components/LoginScreen';
 import { CharacterGhostBabba } from './components/CharacterGhostBabba';
 import './App.css';
 import { IconGhost } from './components/UI/Icons';
+import { AppFooter } from './components/AppFooter';
 
 function App() {
     const [showBabba, setShowBabba] = useState(false);
@@ -34,6 +35,7 @@ function App() {
                 {!showBabba && <LoginScreen showBabba={showBabba} setShowBabba={setShowBabba} />}
                 {/* <GhostDeartyDeeds /> */}
             </div>
+            <AppFooter />
         </div>
     );
 }
