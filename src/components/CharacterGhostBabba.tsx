@@ -59,7 +59,7 @@ export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: 
                                 <a.path
                                     key={idx}
                                     stroke={styles.stroke}
-                                    strokeWidth={styles.o.to([1, 0], [25, 7])}
+                                    strokeWidth={styles.o.to([1, 0.5, 0], [25, 22, 7])}
                                     style={{
                                         strokeDashoffset: styles.o.to({ range: [0, 1], output: [0, LENS[idx]] }),
                                         strokeDasharray: LENS[idx],
