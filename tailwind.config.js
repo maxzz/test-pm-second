@@ -1,7 +1,6 @@
 module.exports = {
-    purge: ['./index.html', './public/**/*.html', './src/**/*.{js,jsx,ts,tsx,vue}'],
-    mode: 'jit',
-    darkMode: false, // or 'media' or 'class'
+    content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
+    darkMode: 'media', // or 'media' or 'class'
     theme: {
         extend: {
             backgroundImage: {
