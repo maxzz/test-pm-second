@@ -1,5 +1,6 @@
 import React, { AnchorHTMLAttributes } from 'react';
 import { classNames } from '../utils/classnames';
+import { pageTitles } from './xlinks';
 
 function NumberLink({ label, className, ...rest }: { label: string; } & AnchorHTMLAttributes<HTMLAnchorElement>) {
     return (
@@ -40,10 +41,10 @@ export function AppFooter() {
             <GithubLink href="https://github.com/maxzz/test-pm-second/#other-test-pages" title="Open GitHub source code" />
 
             <div className="flex items-center space-x-2">
-                <NumberLink label="1" href="https://maxzz.github.io/test-pm" title="Open 5 logins test" />
-                <NumberLink label="2" href="https://maxzz.github.io/test-pm-second" title="Reload this page" />
-                <NumberLink label="3" href="https://maxzz.github.io/test-pm-domain-logins" title="Open domain A/B tests" />
-                <NumberLink label="4" href="https://maxzz.github.io/test-pm-domain-logins22" title="Open page reloads new test" />
+                <NumberLink label="1" {...pageTitles.t0} />
+                <NumberLink label="2" {...pageTitles.re} />
+                <NumberLink label="3" {...pageTitles.t2} />
+                <NumberLink label="4" {...pageTitles.t3} />
             </div>
         </footer>
     );
