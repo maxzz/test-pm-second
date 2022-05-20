@@ -7,7 +7,7 @@ function NumberLink({ label, className, ...rest }: { label: string; } & AnchorHT
         <a
             className={classNames(
                 "px-2 mt-1 w-6 h-6 text-xs border-current border rounded grid place-items-center",
-                "hover:text-indigo-200 hover:bg-indigo-700",
+                "hover:text-indigo-200 hover:bg-indigo-700 hover:scale-[1.2] transition-transform",
                 className,
             )}
             {...rest}
@@ -22,7 +22,7 @@ function GithubLink({ className, ...rest }: AnchorHTMLAttributes<HTMLAnchorEleme
         <a
             className={classNames(
                 "p-1 pt-2 pb-0 border-current border rounded-full",
-                "hover:text-indigo-200 hover:bg-indigo-700",
+                "hover:text-indigo-200 hover:bg-indigo-700 hover:scale-[1.2] transition-transform",
                 className,
             )}
             target="_blank"
@@ -35,9 +35,11 @@ function GithubLink({ className, ...rest }: AnchorHTMLAttributes<HTMLAnchorEleme
     );
 }
 
+const footerShadow = { boxShadow: '#0000003b 0px -2px 10px 2px' };
+
 export function AppSection3_Footer() {
     return (
-        <footer className="p-4 flex items-center justify-between bg-indigo-900 text-indigo-600">
+        <footer className="p-4 flex items-center justify-between bg-indigo-900 text-indigo-600 border-indigo-900 border-t" style={footerShadow}>
             <GithubLink href="https://github.com/maxzz/test-pm-second/#other-test-pages" title="Open GitHub source code" />
 
             <div className="flex items-center space-x-2">

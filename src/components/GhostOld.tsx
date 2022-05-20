@@ -16,7 +16,7 @@ const PATHS = [
 
 const LENS = [1924, 399, 185, 172, 957];
 
-export function CharacterGhostBabba({ show, onRest }: { show: boolean; onRest?: () => void; }) {
+export function GhostOld({ show, onRest }: { show: boolean; onRest?: () => void; }) {
 
     const styles = useSpring({
         from: { o: 1, stroke: 'red', transform: 'scale(1)' },

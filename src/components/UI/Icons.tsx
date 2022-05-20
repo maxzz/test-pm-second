@@ -11,7 +11,7 @@ export const IconGhostBubba = React.forwardRef((props: React.SVGProps<SVGSVGElem
     );
 });
 
-export function GhostDeartyDeeds() {
+export function IconGhostDirtyDeeds() {
     return (
         <div className="w-24 h-24 text-indigo-400">
             <svg viewBox="0 0 371 506" stroke="currentColor" strokeWidth="3">

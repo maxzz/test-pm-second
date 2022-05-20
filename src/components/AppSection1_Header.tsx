@@ -31,13 +31,13 @@ function Ghost() {
 }
 
 const headerShadow = { boxShadow: '2px 2px 2px rgba(0, 0, 0, 0.2)' };
-const textShadow = { textShadow: '2px 3px #735bbf' };
+const textShadow = { textShadow: '2px 3px #000' };
 
 export function AppSection1_Header() {
     return (
         <header className="p-4 bg-indigo-900 flex items-center space-x-4 overflow-hidden" style={headerShadow}>
             <div className="text-2xl font-thin text-white" style={textShadow}>
-                Password Manager Another Test
+                Password Manager Ghost Test
             </div>
             <Ghost />
         </header>
