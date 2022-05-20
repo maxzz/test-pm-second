@@ -1,13 +1,13 @@
 import { defineConfig } from 'vite';
-import reactRefresh from '@vitejs/plugin-react-refresh';
+import react from '@vitejs/plugin-react';
 import { visualizer } from 'rollup-plugin-visualizer';
 import url from '@rollup/plugin-url';
 
 export default ({ command }) => {
     return defineConfig({
-        base: command === 'build' ? '/test-pm-second/' : '/',
+        base: command === 'build' ? '' : '',
         plugins: [
-            reactRefresh(),
+            react(),
             {
                 ...url(),
                 enforce: 'pre',
