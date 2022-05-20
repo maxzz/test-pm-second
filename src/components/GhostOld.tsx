@@ -1,6 +1,7 @@
 import React from 'react';
-import { a, useSpring } from '@react-spring/web';
-import { easeBounceOut, easeCubicIn, easeCubicOut } from 'd3-ease';
+import { useAtom } from 'jotai';
+import { showBabbaAtom } from '../store/store';
+import { a, easings, useSpring } from '@react-spring/web';
 
 export function calcAllLength<T extends SVGGeometryElement>(selector: string, root: T | undefined): number[] {
     return [...(root || document).querySelectorAll<SVGGeometryElement>(selector)].map((el) => Math.ceil(el.getTotalLength()));
@@ -16,7 +17,8 @@ const PATHS = [
 
 const LENS = [1924, 399, 185, 172, 957];
 
-export function GhostOld({ show, onRest }: { show: boolean; onRest?: () => void; }) {
+export function GhostOld() {
+    const [show, setShowBabba] = useAtom(showBabbaAtom);
 
     const styles = useSpring({
         from: { o: 1, stroke: 'red', transform: 'scale(1)' },
@@ -30,11 +32,11 @@ export function GhostOld({ show, onRest }: { show: boolean; onRest?: () => void;
         // }, [show]),
 
         to: [
-            { o: show ? 0 : 1, config: { easing: easeCubicOut, duration: show ? 600 : 300, }, },
+            { o: show ? 0 : 1, config: { easing: easings.easeOutCubic, duration: show ? 600 : 300, }, },
             // { stroke: show ? 'red' : 'rgb(76, 29, 149)', delay: 200, config: { easing: (t) => easeElasticOut.amplitude(1).period(0.3)(t), duration: 1000 } },
-            { stroke: show ? 'red' : 'rgb(76, 29, 149)', delay: 200, config: { easing: easeBounceOut, duration: 1000 } },
+            { stroke: show ? 'red' : 'rgb(76, 29, 149)', delay: 200, config: { easing: easings.easeOutBounce, duration: 1000 } },
             //{ delay: 2300 },
-            { transform: `scale(${show ? 0 : 1})`, config: { easing: easeCubicIn, duration: 600 } },
+            { transform: `scale(${show ? 0 : 1})`, config: { easing: easings.easeInCubic, duration: 600 } },
         ],
 
         // to: [
@@ -44,7 +46,7 @@ export function GhostOld({ show, onRest }: { show: boolean; onRest?: () => void;
 
         //config: { easing: cubicOut, duration: show ? 600 : 300, },
         //delay: show ? 200 : 400,
-        onRest: () => show && onRest && onRest()
+        onRest: () => show && setShowBabba(false)
     });
 
     return (

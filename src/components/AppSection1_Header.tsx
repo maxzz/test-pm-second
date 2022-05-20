@@ -31,7 +31,7 @@ function Ghost() {
 }
 
 const headerShadow = { boxShadow: '2px 2px 2px rgba(0, 0, 0, 0.2)' };
-const textShadow = { textShadow: '2px 3px #000' };
+const textShadow = { textShadow: '2px 3px #1f1e58' };
 
 export function AppSection1_Header() {
     return (

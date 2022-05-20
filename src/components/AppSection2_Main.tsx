@@ -1,6 +1,4 @@
 import React, { HTMLAttributes } from "react";
-import { useAtom } from "jotai";
-import { showBabbaAtom } from "../store/store";
 import { classNames } from "../utils/classnames";
 import { LoginScreen } from "./LoginScreen";
 import { GhostMain } from "./GhostMain";
@@ -9,7 +7,6 @@ import { IconGhostDirtyDeeds } from "./UI/Icons";
 import { GhostBabbaWLengthCalc } from "./GhostBabbaWLengthCalc";
 
 export function AppSection2_Main({className, ...rest}: HTMLAttributes<HTMLDivElement>) {
-    const [showBabba, setShowBabba] = useAtom(showBabbaAtom);
 
     // useEffect(() => {
     //     if (showBabba) {
@@ -26,12 +23,10 @@ export function AppSection2_Main({className, ...rest}: HTMLAttributes<HTMLDivEle
 
             <GhostMain />
 
-            {<GhostOld show={showBabba} onRest={() => setShowBabba(false)} />}
+            {<GhostOld />}
             {/* {<GhostOld show={true} />} */}
 
-            {!showBabba &&
-                <LoginScreen showBabba={showBabba} setShowBabba={setShowBabba} />
-            }
+            <LoginScreen />
         </div>
     );
 }
