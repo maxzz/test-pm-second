@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { useAtom } from 'jotai';
 import { showBabbaAtom } from '../store/store';
 import { IconGhost } from './UI/Icons';
-import { a, easings, useSpring } from '@react-spring/web';
+import { a, easings, useSpring, useSpringRef } from '@react-spring/web';
 
 const AIconGhost = a(IconGhost);
 
 export function GhostMain() {
     // const [show, setShowBabba] = useAtom(showBabbaAtom2);
 
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
 
     // const [show, setShowBabba] = useState(false);
     // const [styles, api] = useSpring(() => ({
@@ -25,10 +25,29 @@ export function GhostMain() {
     // }));
     // React.useEffect(() => setShowBabba(true));
 
-    const styles = useSpring({
+    // const styles = useSpring({
+    //     from: { opacity: 0, scale: [1, 0.5], },
+    //     to: [
+    //         { opacity: 1, scale: [2.5, 0.5], },
+    //         { opacity: 1, scale: [.3, 1.3], },
+    //         { opacity: 1, scale: [1.5, 0.5], },
+    //         { opacity: 1, scale: [.3, 1], },
+    //         { opacity: 1, scale: [1.5, .5], },
+    //         { opacity: 1, scale: [.2, .5], config: { easings: easings.easeOutBounce, duration: 600, }, },
+    //         { opacity: 1, scale: [-.2, .5], config: { easings: easings.easeOutBounce, duration: 100, }, },
+    //         { opacity: 1, scale: [-1, 1], config: { easings: easings.easeOutBounce, duration: 600, }, },
+    //     ],
+    //     reset: open,
+    //     //config: { easings: easings.easeOutBounce, duration: 200, },
+    //     //
+    // });
+
+    //const springRef = useSpringRef();
+    const [styles, api] = useSpring({
+        //ref: springRef,
         from: { opacity: 0, scale: [1, 0.5], },
         to: [
-            { opacity: 1, scale: [2.5, 0.5], },
+            { opacity: 1, scale: [1.5, 0.5], },
             { opacity: 1, scale: [.3, 1.3], },
             { opacity: 1, scale: [1.5, 0.5], },
             { opacity: 1, scale: [.3, 1], },
@@ -36,11 +55,11 @@ export function GhostMain() {
             { opacity: 1, scale: [.2, .5], config: { easings: easings.easeOutBounce, duration: 600, }, },
             { opacity: 1, scale: [-.2, .5], config: { easings: easings.easeOutBounce, duration: 100, }, },
             { opacity: 1, scale: [-1, 1], config: { easings: easings.easeOutBounce, duration: 600, }, },
-        ],
-        reset: open,
+],
+        reset: true,
         //config: { easings: easings.easeOutBounce, duration: 200, },
         //
-    });
+    }, [open]);
 
     return (
         <div>
