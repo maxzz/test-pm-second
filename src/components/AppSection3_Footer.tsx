@@ -35,7 +35,7 @@ function GithubLink({ className, ...rest }: AnchorHTMLAttributes<HTMLAnchorEleme
     );
 }
 
-export function AppFooter() {
+export function AppSection3_Footer() {
     return (
         <footer className="p-4 flex items-center justify-between bg-indigo-900 text-indigo-600">
             <GithubLink href="https://github.com/maxzz/test-pm-second/#other-test-pages" title="Open GitHub source code" />

@@ -3,7 +3,7 @@ import { CharacterGhostBabba } from "./CharacterGhostBabba";
 import { LoginScreen } from "./LoginScreen";
 import { GhostDeartyDeeds } from "./UI/Icons";
 
-export function MainSection() {
+export function AppSection2_Main() {
     const [showBabba, setShowBabba] = useState(false);
 
     // useEffect(() => {
