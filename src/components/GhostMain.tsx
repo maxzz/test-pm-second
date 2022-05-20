@@ -26,14 +26,19 @@ export function GhostMain() {
     // React.useEffect(() => setShowBabba(true));
 
     const styles = useSpring({
-        from: { opacity: 0, scaleX: 1, },
+        from: { opacity: 0, scale: [1, 0.5], },
         to: [
-            { opacity: 1, scaleX: -1, },
-            { opacity: 1, scaleX: 1, },
-            { opacity: 1, scaleX: -1, },
+            { opacity: 1, scale: [2.5, 0.5], },
+            { opacity: 1, scale: [.3, 1.3], },
+            { opacity: 1, scale: [1.5, 0.5], },
+            { opacity: 1, scale: [.3, 1], },
+            { opacity: 1, scale: [1.5, .5], },
+            { opacity: 1, scale: [.2, .5], config: { easings: easings.easeOutBounce, duration: 600, }, },
+            { opacity: 1, scale: [-.2, .5], config: { easings: easings.easeOutBounce, duration: 100, }, },
+            { opacity: 1, scale: [-1, 1], config: { easings: easings.easeOutBounce, duration: 600, }, },
         ],
         reset: open,
-        config: { easings: easings.easeOutBounce, duration: 200, },
+        //config: { easings: easings.easeOutBounce, duration: 200, },
         //
     });
 
@@ -45,6 +50,7 @@ export function GhostMain() {
                 value="Reload"
                 onClick={() => {
                     setOpen((v) => !v);
+                    console.log('click', open);
                     //api.start();
                 }}
             />
