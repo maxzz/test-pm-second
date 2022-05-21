@@ -4,7 +4,7 @@ import { useUpdateAtom } from "jotai/utils";
 import { a, config, useSpring } from "@react-spring/web";
 import { useLocalStorage } from "use-hooks";
 import { IconUser } from "./UI/Icons";
-import { showBabbaAtom } from "../store/store";
+import { ghostTargetAtom, showBabbaAtom } from "../store/store";
 
 function InputField({ value, setValue, isPassword = false }: { value: string; setValue: (v: string) => void; isPassword?: boolean; } & HTMLAttributes<HTMLLabelElement>) {
     const attrs = isPassword ? {
@@ -87,8 +87,10 @@ function LoginFrame() {
         config: { ...config.wobbly },
     }));
 
+    const setGhostTarget = useUpdateAtom(ghostTargetAtom);
+
     return (
-        <a.div style={{ ...styles, ...{ boxShadow: '#fff1ce4a 0px 0px 15px 6px' } }}>
+        <a.div ref={setGhostTarget} style={{ ...styles, ...{ boxShadow: '#fff1ce4a 0px 0px 15px 6px' } }}>
             <section className="bg-indigo-200 rounded-lg border shadow-sm ring-2 ring-indigo-500 ring-offset-1 ring-offset-indigo-600" style={formStyles}>
                 <LoginForm />
             </section>

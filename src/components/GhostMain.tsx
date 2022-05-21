@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useAtom } from 'jotai';
-import { showBabbaAtom } from '../store/store';
+import React from 'react';
+import { useAtomValue } from 'jotai';
+import { ghostTargetAtom } from '../store/store';
 import { IconGhost } from './UI/Icons';
-import { a, easings, useSpring, useSpringRef } from '@react-spring/web';
+import { a, easings, useSpring } from '@react-spring/web';
 
 const AIconGhost = a(IconGhost);
 
@@ -110,6 +110,10 @@ export function GhostMain() {
 
     const { n, ...rest } = styles;
 
+    const ghostTarget = useAtomValue(ghostTargetAtom);
+    console.log('ghostTarget', ghostTarget);
+
+
     return (
         <div>
             <input
@@ -126,8 +130,8 @@ export function GhostMain() {
             {/* <AIconGhost style={styles} className="absolute left-0 top-0 w-32 h-32 text-indigo-900" strokeWidth={.7} /> */}
 
             <AIconGhost style={{
-                x: n.to({range: [0, 0.5, 1], output: [0, 180, 200]}),
-                y: n.to({range: [0, 0.5, 1], output: [0, 80, 200]}),
+                x: n.to({ range: [0, 0.5, 1], output: [0, 180, 200] }),
+                y: n.to({ range: [0, 0.5, 1], output: [0, 80, 200] }),
                 ...rest,
             }} className="absolute left-0 top-0 w-32 h-32 text-indigo-900" strokeWidth={.7} />
         </div>
