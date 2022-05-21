@@ -6,6 +6,9 @@ import { a, easings, useSpring, useSpringRef } from '@react-spring/web';
 
 const AIconGhost = a(IconGhost);
 
+// 1. Don't use short number notation like .5 use only 0.5.
+// 2. animated param should be defined in 'from' before appearing into 'to'.
+
 export function GhostMain() {
     // const [show, setShowBabba] = useAtom(showBabbaAtom2);
 
@@ -80,7 +83,7 @@ export function GhostMain() {
     }, [open]);
     /**/
 
-    /*OK*/
+    /*OK* /
     const springRef = useSpringRef();
     const styles = useSpring({
         ref: springRef,
@@ -96,6 +99,17 @@ export function GhostMain() {
     useEffect(() => { springRef.start(); }, [open]);
     /**/
 
+    const [styles, api] = useSpring({
+        from: { opacity: 1, n: 0, },
+        to: [
+            { n: 1, },
+        ],
+        reset: true,
+        config: { easings: easings.easeOutBounce, duration: 1000, },
+    }, [open]);
+
+    const { n, ...rest } = styles;
+
     return (
         <div>
             <input
@@ -109,7 +123,13 @@ export function GhostMain() {
                 }}
             />
 
-            <AIconGhost style={styles} className="absolute left-0 top-0 w-32 h-32 text-indigo-900" strokeWidth={.7} />
+            {/* <AIconGhost style={styles} className="absolute left-0 top-0 w-32 h-32 text-indigo-900" strokeWidth={.7} /> */}
+
+            <AIconGhost style={{
+                x: n.to({range: [0, 0.5, 1], output: [0, 180, 200]}),
+                y: n.to({range: [0, 0.5, 1], output: [0, 80, 200]}),
+                ...rest,
+            }} className="absolute left-0 top-0 w-32 h-32 text-indigo-900" strokeWidth={.7} />
         </div>
     );
 }
