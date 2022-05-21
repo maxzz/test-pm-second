@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAtomValue } from 'jotai';
-import { ghostTargetAtom } from '../store/store';
+import { ghostTargetAtom, workingAreaAtom } from '../store/store';
 import { IconGhost } from './UI/Icons';
 import { a, easings, useSpring } from '@react-spring/web';
 
@@ -101,18 +101,19 @@ export function GhostMain() {
 
     const [styles, api] = useSpring({
         from: { opacity: 1, n: 0, },
-        to: [
-            { n: 1, },
-        ],
+        to: { n: 1, },
         reset: true,
         config: { easings: easings.easeOutBounce, duration: 1000, },
     }, [open]);
 
     const { n, ...rest } = styles;
 
+    const workingArea = useAtomValue(workingAreaAtom);
     const ghostTarget = useAtomValue(ghostTargetAtom);
-    console.log('ghostTarget', ghostTarget);
 
+    const pos = ghostTarget?.getBoundingClientRect() || { x: workingArea.width / 2, y: workingArea.height / 2 };
+
+    console.log('ghostTarget', pos, workingArea);
 
     return (
         <div>
@@ -122,7 +123,7 @@ export function GhostMain() {
                 value="Reload"
                 onClick={() => {
                     setOpen((v) => !v);
-                    console.log('click', open);
+                    //console.log('click', open);
                     //api.start();
                 }}
             />
@@ -130,8 +131,8 @@ export function GhostMain() {
             {/* <AIconGhost style={styles} className="absolute left-0 top-0 w-32 h-32 text-indigo-900" strokeWidth={.7} /> */}
 
             <AIconGhost style={{
-                x: n.to({ range: [0, 0.5, 1], output: [0, 180, 200] }),
-                y: n.to({ range: [0, 0.5, 1], output: [0, 80, 200] }),
+                x: n.to({ range: [0, 0.5, 1], output: [0, 180, pos.x] }),
+                y: n.to({ range: [0, 0.5, 1], output: [0, 80, pos.y] }),
                 ...rest,
             }} className="absolute left-0 top-0 w-32 h-32 text-indigo-900" strokeWidth={.7} />
         </div>

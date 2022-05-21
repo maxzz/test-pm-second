@@ -40,8 +40,10 @@ function FormLogo() {
         }
     }, [showBabba]);
 
+    const setGhostTarget = useUpdateAtom(ghostTargetAtom);
+
     return (
-        <a.div className="mb-4 pb-2 border-indigo-700 border-b" style={styles}>
+        <a.div ref={setGhostTarget} className="mb-4 pb-2 border-indigo-700 border-b" style={styles}>
             <IconUser className="w-16 h-16 mb-2 text-indigo-400" />
         </a.div>
     );
@@ -86,11 +88,9 @@ function LoginFrame() {
         to: { scaleY: 1, },
         config: { ...config.wobbly },
     }));
-
-    const setGhostTarget = useUpdateAtom(ghostTargetAtom);
-
+    
     return (
-        <a.div ref={setGhostTarget} style={{ ...styles, ...{ boxShadow: '#fff1ce4a 0px 0px 15px 6px' } }}>
+        <a.div style={{ ...styles, ...{ boxShadow: '#fff1ce4a 0px 0px 15px 6px' } }}>
             <section className="bg-indigo-200 rounded-lg border shadow-sm ring-2 ring-indigo-500 ring-offset-1 ring-offset-indigo-600" style={formStyles}>
                 <LoginForm />
             </section>
