@@ -100,15 +100,19 @@ export function GhostMain() {
     /**/
 
     const [styles, api] = useSpring({
-        from: { opacity: 1, scale: '1, 1', n: 0, },
+        from: { opacity: 0.25, scale: '0.5, 0.5', n: 0, },
         to: [
-            { n: 1 },
-            { n: 1, scale: '1.3, 0.5', config: { duration: 600, }, },
-            { n: 1, scale: '0.3, 0.5', config: { duration: 600, }, },
-            { n: 1, scale: '1, 1', },
+            { n: 1, config: { duration: 1000, }, },
+            { scale: '0.1, 1', config: { duration: 300, }, },
+            { scale: '1, 0.5', config: { duration: 600, }, },
+            { scale: '0.7, 1', config: { duration: 600, }, },
+            { scale: '1.1, 0.9', config: { duration: 300, }, },
+            { scale: '0.9, 1', config: { duration: 600, }, },
+            { scale: '0, 0', },
+            { scale: '-1, 1', opacity: 1, },
         ],
         reset: true,
-        //config: { easings: easings.easeOutBounce, duration: 1000, },
+        //config: { easings: easings.easeOutBounce, duration: 400, },
     }, [open]);
 
     const { n, ...rest } = styles;
@@ -117,8 +121,8 @@ export function GhostMain() {
     const ghostTarget = useAtomValue(ghostTargetAtom);
 
     const pos = ghostTarget?.getBoundingClientRect() || { x: workingArea.width / 2, y: workingArea.height / 2 };
-    pos.x -= 32;
-    pos.y -= 84; // App header height (64) and top edge of ghost SVG (20).
+    pos.x -= 36; // Left edge of ghost SVG.
+    pos.y -= 94; // App header height (64) and top edge of ghost SVG (30).
 
     console.log('ghostTarget', pos, workingArea);
 
@@ -138,8 +142,8 @@ export function GhostMain() {
             {/* <AIconGhost style={styles} className="absolute left-0 top-0 w-32 h-32 text-indigo-900" strokeWidth={.7} /> */}
 
             <AIconGhost data-n={n} style={{
-                x: n.to({ range: [0, 0.5, 1], output: [0, workingArea.width / 2, pos.x] }),
-                y: n.to({ range: [0, 0.5, 1], output: [0, pos.y / 2, pos.y] }),
+                x: n.to({ range: [0, 0.25, 0.5, 0.75, 1], output: [100, workingArea.width * 0.7, workingArea.width * 0.1, workingArea.width * 0.5, pos.x + 8] }),
+                y: n.to({ range: [0, 0.5, 1], output: [100, pos.y / 2, pos.y] }),
                 ...rest,
             }} className="absolute left-0 top-0 w-32 h-32 fill-slate-500 text-indigo-900" strokeWidth={.7} />
         </div>
