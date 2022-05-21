@@ -39,6 +39,7 @@ const footerShadow = { boxShadow: '#0000003b 0px -2px 10px 2px' };
 
 export function AppSection3_Footer() {
     return (
+        //<footer className="p-4 flex items-center justify-between bg-[#03014d] bg-hero-pattern text-indigo-600 border-indigo-900 border-t" style={footerShadow}>
         <footer className="p-4 flex items-center justify-between bg-indigo-900 text-indigo-600 border-indigo-900 border-t" style={footerShadow}>
             <GithubLink href="https://github.com/maxzz/test-pm-second/#other-test-pages" title="Open GitHub source code" />
 
