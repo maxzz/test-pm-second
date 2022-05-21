@@ -112,6 +112,7 @@ export function GhostMain() {
     const ghostTarget = useAtomValue(ghostTargetAtom);
 
     const pos = ghostTarget?.getBoundingClientRect() || { x: workingArea.width / 2, y: workingArea.height / 2 };
+    pos.y -= 84; // App header height (64) and top edge of ghost SVG (20).
 
     console.log('ghostTarget', pos, workingArea);
 
@@ -131,8 +132,8 @@ export function GhostMain() {
             {/* <AIconGhost style={styles} className="absolute left-0 top-0 w-32 h-32 text-indigo-900" strokeWidth={.7} /> */}
 
             <AIconGhost style={{
-                x: n.to({ range: [0, 0.5, 1], output: [0, 180, pos.x] }),
-                y: n.to({ range: [0, 0.5, 1], output: [0, 80, pos.y] }),
+                x: n.to({ range: [0, 0.5, 1], output: [0, workingArea.width / 2, pos.x] }),
+                y: n.to({ range: [0, 0.5, 1], output: [0, workingArea.height / 2, pos.y] }),
                 ...rest,
             }} className="absolute left-0 top-0 w-32 h-32 text-indigo-900" strokeWidth={.7} />
         </div>
