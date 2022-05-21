@@ -100,10 +100,15 @@ export function GhostMain() {
     /**/
 
     const [styles, api] = useSpring({
-        from: { opacity: 1, n: 0, },
-        to: { n: 1, },
+        from: { opacity: 1, scale: '1, 1', n: 0, },
+        to: [
+            { n: 1 },
+            { n: 1, scale: '1.3, 0.5', config: { duration: 600, }, },
+            { n: 1, scale: '0.3, 0.5', config: { duration: 600, }, },
+            { n: 1, scale: '1, 1', },
+        ],
         reset: true,
-        config: { easings: easings.easeOutBounce, duration: 1000, },
+        //config: { easings: easings.easeOutBounce, duration: 1000, },
     }, [open]);
 
     const { n, ...rest } = styles;
@@ -112,6 +117,7 @@ export function GhostMain() {
     const ghostTarget = useAtomValue(ghostTargetAtom);
 
     const pos = ghostTarget?.getBoundingClientRect() || { x: workingArea.width / 2, y: workingArea.height / 2 };
+    pos.x -= 32;
     pos.y -= 84; // App header height (64) and top edge of ghost SVG (20).
 
     console.log('ghostTarget', pos, workingArea);
@@ -131,11 +137,11 @@ export function GhostMain() {
 
             {/* <AIconGhost style={styles} className="absolute left-0 top-0 w-32 h-32 text-indigo-900" strokeWidth={.7} /> */}
 
-            <AIconGhost style={{
+            <AIconGhost data-n={n} style={{
                 x: n.to({ range: [0, 0.5, 1], output: [0, workingArea.width / 2, pos.x] }),
-                y: n.to({ range: [0, 0.5, 1], output: [0, workingArea.height / 2, pos.y] }),
+                y: n.to({ range: [0, 0.5, 1], output: [0, pos.y / 2, pos.y] }),
                 ...rest,
-            }} className="absolute left-0 top-0 w-32 h-32 text-indigo-900" strokeWidth={.7} />
+            }} className="absolute left-0 top-0 w-32 h-32 fill-slate-500 text-indigo-900" strokeWidth={.7} />
         </div>
     );
 }
