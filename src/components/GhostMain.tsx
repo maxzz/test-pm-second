@@ -100,16 +100,17 @@ export function GhostMain() {
     /**/
 
     const [styles, api] = useSpring({
-        from: { opacity: 0.25, scale: '0.5, 0.5', n: 0, },
+        //from: { opacity: 1, scale: '1, 1', n: 0, fill: '#312e8180', },
+        from: { opacity: .25, scale: '0.5, 0.5', n: 0, fill: '#00000000', },
         to: [
-            { n: 1, config: { duration: 900, }, },
+            { n: 1, fill: '#00000000', config: { duration: 900, }, }, // #312e81 to have it flat
             { scale: '0.1, 1', config: { duration: 300, }, },
             { scale: '1, 0.5', config: { duration: 600, }, },
             { scale: '0.7, 1', config: { duration: 600, }, },
             { scale: '1.1, 0.9', config: { duration: 300, }, },
             { scale: '0.9, 1', config: { duration: 600, }, },
             { scale: '0, 0', },
-            { scale: '-1, 1', opacity: 1, },
+            { scale: '-1, 1', opacity: 1, fill: '#ff0000', },
         ],
         reset: true,
         //config: { easings: easings.easeOutBounce, duration: 400, },
