@@ -9,7 +9,9 @@ const AIconGhost = a(IconGhost);
 const animationProps = {
     from: { opacity: 0, scale: '0.5, 0.5', n: 0, fill: '#312e81', },
     to: [
+        { n: 1, opacity: 1, config: { duration: 0, }, }, // skip all move transitions to test the rest of animation
         { n: 1, opacity: 1, config: { duration: 900, }, }, // #312e81 to have it flat
+
         { scale: '0.1, 1', config: { duration: 300, }, },
         { scale: '1, 0.5', config: { duration: 600, }, },
         { scale: '0.7, 1', config: { duration: 400, }, },
@@ -17,9 +19,10 @@ const animationProps = {
         { scale: '0.9, 1', config: { duration: 400, }, },
         { scale: '0, 0', },
         { scale: '-1, 1', opacity: 1, },
+
         { fill: '#ff0000', config: { duration: 1200, }, },
-        { opacity: 0.5, fill: '#312e81', config: { duration: 1200, }, },
-        { opacity: 0, config: { duration: 200, }, },
+        { opacity: 0.5, fill: '#312e81', config: { duration: 500, }, },
+        { opacity: 0, fill: '#00000000', config: { duration: 200, }, }, // from bkg #c7d2fe
     ]
 };
 
@@ -45,6 +48,8 @@ export function GhostMain() {
     const [loginStarted, setLoginStarted] = useAtom(loginStartedAtom);
 
     React.useEffect(() => {
+        console.log('loginStarted', loginStarted);
+
         if (loginStarted) {
             api.set(animationProps.from);
             start();
@@ -55,7 +60,7 @@ export function GhostMain() {
         setPos(getTargetPos(ghostTarget, { x: wArea / 2, y: hArea / 2 }));
         api.start({
             ...animationProps, onRest: () => {
-                //console.log('done------------------');
+                console.log('done------------------');
                 setLoginStarted(false);
             }
         });
@@ -68,7 +73,9 @@ export function GhostMain() {
                 type="button"
                 value="Reload"
                 // onClick={start}
-                onClick={() => setLoginStarted(true)}
+                onClick={() => { 
+                    api.stop();
+                    setLoginStarted((v) => !v); }}
             />
 
             {/* <AIconGhost style={styles} className="absolute left-0 top-0 w-32 h-32 text-indigo-900" strokeWidth={.7} /> */}
