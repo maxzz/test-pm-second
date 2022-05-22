@@ -7,7 +7,7 @@ import { a, easings, useSpring, useSpringRef } from '@react-spring/web';
 const AIconGhost = a(IconGhost);
 
 const animationProps = {
-    from: { opacity: .25, scale: '0.5, 0.5', n: 0, fill: '#312e81', },
+    from: { opacity: 0, scale: '0.5, 0.5', n: 0, fill: '#312e81', },
     to: [
         { n: 1, opacity: 1, config: { duration: 900, }, }, // #312e81 to have it flat
         { scale: '0.1, 1', config: { duration: 300, }, },
@@ -36,12 +36,9 @@ export function GhostMain() {
     const [pos, setPos] = useState({ x: 0, y: 0 });
 
     const api = useSpringRef();
-    const styles = useSpring({
-        ref: api,
-        from: { opacity: 0, scale: '0.5, 0.5', n: 0, fill: '#312e81', },
-    });
-
+    const styles = useSpring({ ref: api, from: animationProps.from, });
     const { n, ...rest } = styles;
+    
     return (
         <div>
             <input
