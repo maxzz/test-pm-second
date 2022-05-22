@@ -2,7 +2,7 @@ import React from 'react';
 import { useAtomValue } from 'jotai';
 import { ghostTargetAtom, workingAreaAtom } from '../store/store';
 import { IconGhost } from './UI/Icons';
-import { a, easings, useSpring } from '@react-spring/web';
+import { a, easings, useSpring, useSpringRef } from '@react-spring/web';
 
 const AIconGhost = a(IconGhost);
 
@@ -11,33 +11,26 @@ export function GhostMain() {
 
     const [open, setOpen] = React.useState(false);
 
-    const [styles, api] = useSpring({
+    const api = useSpringRef();
+    const styles = useSpring({
         //from: { opacity: 1, scale: '1, 1', n: 0, fill: '#312e8180', },
-        from: { opacity: .25, scale: '0.5, 0.5', n: 0, fill: '#00000000', },
-        to: [
-            { n: 1, fill: '#00000000', config: { duration: 900, }, }, // #312e81 to have it flat
-            { scale: '0.1, 1', config: { duration: 300, }, },
-            { scale: '1, 0.5', config: { duration: 600, }, },
-            { scale: '0.7, 1', config: { duration: 600, }, },
-            { scale: '1.1, 0.9', config: { duration: 300, }, },
-            { scale: '0.9, 1', config: { duration: 600, }, },
-            { scale: '0, 0', },
-            { scale: '-1, 1', opacity: 1, fill: '#ff0000', },
-        ],
-        reset: true,
+        ref: api,
+        //from: { n: 0, opacity: 0 },
+        from: { opacity: 0, scale: '0.5, 0.5', n: 0, fill: '#312e81', },
+        //reset: true,
         //config: { easings: easings.easeOutBounce, duration: 400, },
-    }, [open]);
+    });
 
     const { n, ...rest } = styles;
 
-    const {width: wArea, height: hArea} = useAtomValue(workingAreaAtom);
+    const { width: wArea, height: hArea } = useAtomValue(workingAreaAtom);
     const ghostTarget = useAtomValue(ghostTargetAtom);
 
     const pos = ghostTarget?.getBoundingClientRect() || { x: wArea / 2, y: hArea / 2 };
     pos.x -= 36; // Left edge of ghost SVG.
     pos.y -= 94; // App header height (64) and top edge of ghost SVG (30).
 
-    console.log('ghostTarget', ghostTarget ? {x: pos.x, y: pos.y} : '-------------null', {wArea, hArea});
+    //console.log('ghostTarget', ghostTarget ? {x: pos.x, y: pos.y} : '-------------null', {wArea, hArea});
 
     return (
         <div>
@@ -48,7 +41,20 @@ export function GhostMain() {
                 onClick={() => {
                     setOpen((v) => !v);
                     //console.log('click', open);
-                    //api.start();
+                    api.start({
+                        from: { opacity: .25, scale: '0.5, 0.5', n: 0, fill: '#312e81', },
+                        to: [
+                            { n: 1, opacity: 1, config: { duration: 900, }, }, // #312e81 to have it flat
+                            { scale: '0.1, 1', config: { duration: 300, }, },
+                            { scale: '1, 0.5', config: { duration: 600, }, },
+                            { scale: '0.7, 1', config: { duration: 600, }, },
+                            { scale: '1.1, 0.9', config: { duration: 300, }, },
+                            { scale: '0.9, 1', config: { duration: 600, }, },
+                            { scale: '0, 0', },
+                            { scale: '-1, 1', opacity: 1, fill: '#ff0000', },
+                        ]
+                    }
+                    );
                 }}
             />
 
