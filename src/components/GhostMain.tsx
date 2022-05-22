@@ -3,6 +3,7 @@ import { useAtom, useAtomValue } from 'jotai';
 import { ghostTargetAtom, loginStartedAtom, workingAreaAtom } from '../store/store';
 import { IconGhost } from './UI/Icons';
 import { a, easings, useSpring, useSpringRef } from '@react-spring/web';
+import { ReloadButton } from './UI/ReloadButton';
 
 const AIconGhost = a(IconGhost);
 
@@ -36,18 +37,6 @@ const getTargetPos = (target: HTMLDivElement | null, def: { x: number; y: number
     return pos;
 };
 
-function ReloadButton() {
-    const [loginStarted, setLoginStarted] = useAtom(loginStartedAtom);
-    return (
-        <input
-            className="self-center mr-2 px-2 py-1 text-xs text-yellow-100 border-yellow-100 hover:bg-slate-900/50 border rounded active:scale-[.97] cursor-pointer"
-            type="button"
-            value={loginStarted ? 'Stop' : 'Reload'}
-            onClick={() => setLoginStarted((v) => !v)}
-        />
-    );
-}
-
 export function GhostMain() {
     const ghostTarget = useAtomValue(ghostTargetAtom);
     const { width: wArea, height: hArea } = useAtomValue(workingAreaAtom);
@@ -75,9 +64,6 @@ export function GhostMain() {
     return (
         <div>
             <ReloadButton />
-
-            {/* <AIconGhost style={styles} className="absolute left-0 top-0 w-32 h-32 text-indigo-900" strokeWidth={.7} /> */}
-
             {loginStarted &&
                 <AIconGhost
                     data-n={n}
