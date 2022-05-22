@@ -51,6 +51,7 @@ export function GhostMain() {
         console.log('loginStarted', loginStarted);
 
         if (loginStarted) {
+            api.stop(true);
             api.set(animationProps.from);
             start();
         }
@@ -59,9 +60,11 @@ export function GhostMain() {
     function start() {
         setPos(getTargetPos(ghostTarget, { x: wArea / 2, y: hArea / 2 }));
         api.start({
-            ...animationProps, onRest: () => {
-                console.log('done------------------');
-                setLoginStarted(false);
+            ...animationProps, onRest: ({ finished }) => {
+                console.log('done------------------finished =', finished);
+                if (finished) {
+                    setLoginStarted(false);
+                }
             }
         });
     }
@@ -73,9 +76,10 @@ export function GhostMain() {
                 type="button"
                 value="Reload"
                 // onClick={start}
-                onClick={() => { 
-                    api.stop();
-                    setLoginStarted((v) => !v); }}
+                onClick={() => {
+                    //api.stop();
+                    setLoginStarted((v) => !v);
+                }}
             />
 
             {/* <AIconGhost style={styles} className="absolute left-0 top-0 w-32 h-32 text-indigo-900" strokeWidth={.7} /> */}
