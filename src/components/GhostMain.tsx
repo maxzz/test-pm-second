@@ -16,7 +16,10 @@ const animationProps = {
         { scale: '1.1, 0.9', config: { duration: 600, }, },
         { scale: '0.9, 1', config: { duration: 400, }, },
         { scale: '0, 0', },
-        { scale: '-1, 1', opacity: 1, fill: '#ff0000', },
+        { scale: '-1, 1', opacity: 1, },
+        { fill: '#ff0000', config: { duration: 1200, }, },
+        { opacity: 0.5, fill: '#312e81', config: { duration: 1200, }, },
+        { opacity: 0, config: { duration: 200, }, },
     ]
 };
 
@@ -43,6 +46,7 @@ export function GhostMain() {
 
     React.useEffect(() => {
         if (loginStarted) {
+            api.set(animationProps.from);
             start();
         }
     }, [loginStarted]);
@@ -51,7 +55,7 @@ export function GhostMain() {
         setPos(getTargetPos(ghostTarget, { x: wArea / 2, y: hArea / 2 }));
         api.start({
             ...animationProps, onRest: () => {
-                console.log('done------------------');
+                //console.log('done------------------');
                 setLoginStarted(false);
             }
         });
