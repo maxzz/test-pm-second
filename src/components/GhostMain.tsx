@@ -63,7 +63,7 @@ export function GhostMain() {
 
     return (
         <div>
-            <ReloadButton />
+            {/* <ReloadButton /> */}
             {loginStarted &&
                 <AIconGhost
                     data-n={n}

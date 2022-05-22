@@ -4,7 +4,7 @@ import { useUpdateAtom } from "jotai/utils";
 import { a, config, useSpring } from "@react-spring/web";
 import { useLocalStorage } from "use-hooks";
 import { IconUser } from "./UI/Icons";
-import { ghostTargetAtom, showBabbaAtom } from "../store/store";
+import { ghostTargetAtom, loginStartedAtom, showBabbaAtom } from "../store/store";
 
 function InputField({ value, setValue, isPassword = false }: { value: string; setValue: (v: string) => void; isPassword?: boolean; } & HTMLAttributes<HTMLLabelElement>) {
     const attrs = isPassword ? {
@@ -50,7 +50,8 @@ function FormLogo() {
 }
 
 function LoginForm() {
-    const setShowBabba = useUpdateAtom(showBabbaAtom);
+    //const setShowBabba = useUpdateAtom(showBabbaAtom);
+    const setLoginStarted = useUpdateAtom(loginStartedAtom);
 
     const [username, setUsername] = useLocalStorage('pm-test-2-username', 'maxzz');
     const [password, setPassword] = useLocalStorage('pm-test-2-password', '123456');
@@ -72,7 +73,8 @@ function LoginForm() {
                         //     config: { duration: 200, },
                         //     onRest: onLogin
                         // });
-                        setShowBabba(v => !v);
+                        //setShowBabba(v => !v);
+                        setLoginStarted((v) => !v);
                     }}
                 >
                     Login
@@ -88,7 +90,7 @@ function LoginFrame() {
         to: { scaleY: 1, },
         config: { ...config.wobbly },
     }));
-    
+
     return (
         <a.div style={{ ...styles, ...{ boxShadow: '#fff1ce4a 0px 0px 15px 6px' } }}>
             <section className="bg-indigo-200 rounded-lg border shadow-sm ring-2 ring-indigo-500 ring-offset-1 ring-offset-indigo-600" style={formStyles}>
