@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useAtomValue } from 'jotai';
-import { ghostTargetAtom, workingAreaAtom } from '../store/store';
+import { useAtom, useAtomValue } from 'jotai';
+import { ghostTargetAtom, loginStartedAtom, workingAreaAtom } from '../store/store';
 import { IconGhost } from './UI/Icons';
 import { a, easings, useSpring, useSpringRef } from '@react-spring/web';
 
@@ -36,32 +36,50 @@ export function GhostMain() {
     const [pos, setPos] = useState({ x: 0, y: 0 });
 
     const api = useSpringRef();
-    const styles = useSpring({ ref: api, from: animationProps.from, });
+    const styles = useSpring({ ref: api, from: animationProps.from });
     const { n, ...rest } = styles;
-    
+
+    const [loginStarted, setLoginStarted] = useAtom(loginStartedAtom);
+
+    React.useEffect(() => {
+        if (loginStarted) {
+            start();
+        }
+    }, [loginStarted]);
+
+    function start() {
+        setPos(getTargetPos(ghostTarget, { x: wArea / 2, y: hArea / 2 }));
+        api.start({
+            ...animationProps, onRest: () => {
+                console.log('done------------------');
+                setLoginStarted(false);
+            }
+        });
+    }
+
     return (
         <div>
             <input
                 className="self-center mr-2 px-2 py-1 text-xs text-yellow-100 border-yellow-100 hover:bg-slate-900/50 border rounded active:scale-[.97] cursor-pointer"
                 type="button"
                 value="Reload"
-                onClick={() => {
-                    setPos(getTargetPos(ghostTarget, { x: wArea / 2, y: hArea / 2 }));
-                    api.start(animationProps);
-                }}
+                // onClick={start}
+                onClick={() => setLoginStarted(true)}
             />
 
             {/* <AIconGhost style={styles} className="absolute left-0 top-0 w-32 h-32 text-indigo-900" strokeWidth={.7} /> */}
 
-            <AIconGhost
-                data-n={n}
-                style={{
-                    x: n.to(xPos(pos.x, wArea)),
-                    y: n.to(yPos(pos.y, hArea)),
-                    ...rest,
-                }}
-                className="absolute left-0 top-0 w-32 h-32 fill-slate-500 text-indigo-900" strokeWidth={.7}
-            />
+            {loginStarted &&
+                <AIconGhost
+                    data-n={n}
+                    style={{
+                        x: n.to(xPos(pos.x, wArea)),
+                        y: n.to(yPos(pos.y, hArea)),
+                        ...rest,
+                    }}
+                    className="absolute left-0 top-0 w-32 h-32 fill-slate-500 text-indigo-900" strokeWidth={.7}
+                />
+            }
         </div>
     );
 }
