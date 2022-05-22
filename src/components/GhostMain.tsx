@@ -36,6 +36,18 @@ const getTargetPos = (target: HTMLDivElement | null, def: { x: number; y: number
     return pos;
 };
 
+function ReloadButton() {
+    const [loginStarted, setLoginStarted] = useAtom(loginStartedAtom);
+    return (
+        <input
+            className="self-center mr-2 px-2 py-1 text-xs text-yellow-100 border-yellow-100 hover:bg-slate-900/50 border rounded active:scale-[.97] cursor-pointer"
+            type="button"
+            value={loginStarted ? 'Stop' : 'Reload'}
+            onClick={() => setLoginStarted((v) => !v)}
+        />
+    );
+}
+
 export function GhostMain() {
     const ghostTarget = useAtomValue(ghostTargetAtom);
     const { width: wArea, height: hArea } = useAtomValue(workingAreaAtom);
@@ -48,10 +60,8 @@ export function GhostMain() {
     const [loginStarted, setLoginStarted] = useAtom(loginStartedAtom);
 
     React.useEffect(() => {
-        console.log('loginStarted', loginStarted);
-
         if (loginStarted) {
-            api.stop(true);
+            api.stop(true); // if we started again by reseting loginStarted, i.e. loginStarted -> false -> true
             api.set(animationProps.from);
             start();
         }
@@ -59,28 +69,12 @@ export function GhostMain() {
 
     function start() {
         setPos(getTargetPos(ghostTarget, { x: wArea / 2, y: hArea / 2 }));
-        api.start({
-            ...animationProps, onRest: ({ finished }) => {
-                console.log('done------------------finished =', finished);
-                if (finished) {
-                    setLoginStarted(false);
-                }
-            }
-        });
+        api.start({ ...animationProps, onRest: ({ finished }) => finished && setLoginStarted(false) });
     }
 
     return (
         <div>
-            <input
-                className="self-center mr-2 px-2 py-1 text-xs text-yellow-100 border-yellow-100 hover:bg-slate-900/50 border rounded active:scale-[.97] cursor-pointer"
-                type="button"
-                value="Reload"
-                // onClick={start}
-                onClick={() => {
-                    //api.stop();
-                    setLoginStarted((v) => !v);
-                }}
-            />
+            <ReloadButton />
 
             {/* <AIconGhost style={styles} className="absolute left-0 top-0 w-32 h-32 text-indigo-900" strokeWidth={.7} /> */}
 

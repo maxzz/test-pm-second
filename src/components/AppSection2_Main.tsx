@@ -13,7 +13,6 @@ export function AppSection2_Main({ className, ...rest }: HTMLAttributes<HTMLDivE
     const { width, height } = useElementSize(containerRef);
 
     useEffect(() => {
-        console.log('width, height', width, height);
         setWorkingArea({ width, height });
     }, [width, height]);
 
