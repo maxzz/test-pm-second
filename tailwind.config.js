@@ -14,17 +14,3 @@ module.exports = {
     },
     plugins: [],
 };
-
-/*
-const bkg = require("./src/assets/svg-bkg-turbulance.svg");
-    ...
-    theme: {
-        extend: {
-            backgroundImage: {
-                'hero-pattern': `url(${bkg})`
-            }
-        },
-    },
-    ...
-};
-*/
