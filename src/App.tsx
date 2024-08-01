@@ -4,7 +4,7 @@ import { AppSection2_Main } from './components/AppSection2_Main';
 import { AppSection3_Footer } from './components/AppSection3_Footer';
 import './App.css';
 
-function App() {
+export function App() {
     return (
         <div className="h-screen bg-indigo-900 bg-hero-pattern flex flex-col">
             <AppSection1_Header />
@@ -13,7 +13,5 @@ function App() {
         </div>
     );
 }
-
-export default App;
 
 //TODO: app to visualize sequence of react-spring animations
