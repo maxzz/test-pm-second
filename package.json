@@ -3,6 +3,7 @@
     "description": "Password Manager another test page",
     "version": "0.0.1",
     "license": "MIT",
+    "type": "module",
     "dependencies": {
         "@react-spring/web": "9.4.5",
         "d3-ease": "^3.0.1",
