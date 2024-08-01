@@ -2,7 +2,6 @@ import React from 'react';
 import { AppSection1_Header } from './components/AppSection1_Header';
 import { AppSection2_Main } from './components/AppSection2_Main';
 import { AppSection3_Footer } from './components/AppSection3_Footer';
-import './App.css';
 
 export function App() {
     return (
