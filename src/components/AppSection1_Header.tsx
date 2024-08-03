@@ -1,5 +1,5 @@
 import React from "react";
-import { IconGhost } from "../ui2/icons";
+import { IconGhost } from "../ui/icons";
 import { a, config, useSpring } from "@react-spring/web";
 
 const AIconGhost = a(IconGhost);
