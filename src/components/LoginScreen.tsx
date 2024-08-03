@@ -1,9 +1,8 @@
-import React, { HTMLAttributes } from "react";
-import { useAtom, useAtomValue } from "jotai";
-import { useUpdateAtom } from "jotai/utils";
+import { CSSProperties, HTMLAttributes, useEffect } from "react";
+import { useAtomValue, useSetAtom } from "jotai";
 import { a, config, useSpring } from "@react-spring/web";
 import { useLocalStorage } from "use-hooks";
-import { IconUser } from "./UI/Icons";
+import { IconUser } from "./ui2/Icons";
 import { ghostTargetAtom, loginStartedAtom, showBabbaAtom } from "../store/store";
 
 function InputField({ value, setValue, isPassword = false }: { value: string; setValue: (v: string) => void; isPassword?: boolean; } & HTMLAttributes<HTMLLabelElement>) {
@@ -34,13 +33,13 @@ function FormLogo() {
         delay: 100,
     }));
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (showBabba) {
             api.start({ opacity: 1, delay: 1200 });
         }
     }, [showBabba]);
 
-    const setGhostTarget = useUpdateAtom(ghostTargetAtom);
+    const setGhostTarget = useSetAtom(ghostTargetAtom);
 
     return (
         <a.div ref={setGhostTarget} className="mb-4 pb-2 border-indigo-700 border-b" style={styles}>
@@ -50,8 +49,8 @@ function FormLogo() {
 }
 
 function LoginForm() {
-    //const setShowBabba = useUpdateAtom(showBabbaAtom);
-    const setLoginStarted = useUpdateAtom(loginStartedAtom);
+    //const setShowBabba = useSetAtom(showBabbaAtom);
+    const setLoginStarted = useSetAtom(loginStartedAtom);
 
     const [username, setUsername] = useLocalStorage('pm-test-2-username', 'maxzz');
     const [password, setPassword] = useLocalStorage('pm-test-2-password', '123456');
@@ -103,7 +102,7 @@ function LoginFrame() {
 const formStyles = {
     '--tw-ring-offset-color': '#fff',
     boxShadow: 'var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)',
-} as React.CSSProperties;
+} as CSSProperties;
 
 export function LoginScreen() {
     const showBabba = useAtomValue(showBabbaAtom);

@@ -4,11 +4,11 @@ import { LoginScreen } from "./LoginScreen";
 import { GhostMain } from "./GhostMain";
 import { GhostOld } from "./GhostOld";
 import { useElementSize } from "../hooks/useElementSize";
-import { useUpdateAtom } from "jotai/utils";
+import { useSetAtom } from "jotai";
 import { workingAreaAtom } from "../store/store";
 
 export function AppSection2_Main({ className, ...rest }: HTMLAttributes<HTMLDivElement>) {
-    const setWorkingArea = useUpdateAtom(workingAreaAtom);
+    const setWorkingArea = useSetAtom(workingAreaAtom);
     const containerRef = useRef<HTMLDivElement>(null);
     const { width, height } = useElementSize(containerRef);
 
