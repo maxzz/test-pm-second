@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from "react";
 import { useAtom } from "jotai";
-import { loginStartedAtom } from "../../store/store";
-import { classNames } from "../../utils/classnames";
+import { loginStartedAtom } from "../store/store";
+import { classNames } from "../utils/classnames";
 
 export function ReloadButton({ className }: HTMLAttributes<HTMLInputElement>) {
     const [loginStarted, setLoginStarted] = useAtom(loginStartedAtom);

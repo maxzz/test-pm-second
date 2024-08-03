@@ -2,7 +2,7 @@ import { CSSProperties, HTMLAttributes, useEffect } from "react";
 import { useAtomValue, useSetAtom } from "jotai";
 import { a, config, useSpring } from "@react-spring/web";
 import { useLocalStorage } from "use-hooks";
-import { IconUser } from "./ui2/Icons";
+import { IconUser } from "../ui2/Icons";
 import { ghostTargetAtom, loginStartedAtom, showBabbaAtom } from "../store/store";
 
 function InputField({ value, setValue, isPassword = false }: { value: string; setValue: (v: string) => void; isPassword?: boolean; } & HTMLAttributes<HTMLLabelElement>) {

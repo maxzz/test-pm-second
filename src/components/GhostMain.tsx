@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useAtom, useAtomValue } from 'jotai';
 import { ghostTargetAtom, loginStartedAtom, workingAreaAtom } from '../store/store';
-import { IconGhost } from './ui2/Icons';
+import { IconGhost } from '../ui2/Icons';
 import { a, easings, useSpring, useSpringRef } from '@react-spring/web';
-import { ReloadButton } from './ui2/ReloadButton';
+import { ReloadButton } from '../ui2/ReloadButton';
 
 const AIconGhost = a(IconGhost);
 
