@@ -1,6 +1,6 @@
 import React, { AnchorHTMLAttributes } from 'react';
 import { classNames } from '../utils/classnames';
-import { ReloadButton } from './UI/ReloadButton';
+import { ReloadButton } from './ui2/ReloadButton';
 import { pageTitles } from './xlinks';
 
 function NumberLink({ label, className, ...rest }: { label: string; } & AnchorHTMLAttributes<HTMLAnchorElement>) {

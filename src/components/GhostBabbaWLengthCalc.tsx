@@ -1,5 +1,5 @@
 import React from "react";
-import { IconGhostBubba } from "./UI/Icons";
+import { IconGhostBubba } from "./ui2/Icons";
 
 export function GhostBabbaWLengthCalc() {
     const pathRef = React.useRef<SVGPathElement>(null);
