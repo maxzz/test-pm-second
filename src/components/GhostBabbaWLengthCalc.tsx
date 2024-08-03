@@ -1,11 +1,11 @@
-import React from "react";
-import { IconGhostBubba } from "../ui/icons";
+import { useEffect, useRef, useState } from "react";
+import { IconGhostBubba } from '@/ui/icons';
 
 export function GhostBabbaWLengthCalc() {
-    const pathRef = React.useRef<SVGPathElement>(null);
-    const [pathLen, setPathLen] = React.useState(0);
+    const pathRef = useRef<SVGPathElement>(null);
+    const [pathLen, setPathLen] = useState(0);
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (pathRef.current) {
             setPathLen(pathRef.current.getTotalLength()); //console.log({pathLen: pathLen});
         }
