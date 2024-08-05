@@ -1,20 +1,37 @@
 import { HTMLAttributes } from "react";
 
-export function InputField({ value, setValue, isPassword = false }: { value: string; setValue: (v: string) => void; isPassword?: boolean; } & HTMLAttributes<HTMLLabelElement>) {
-    const attrs = isPassword ? {
-        className: "inp",
-        spellCheck: false,
-        autoComplete: "password",
-        type: "password",
-    } : {
-        className: "inp",
-        spellCheck: false,
-        autoComplete: "email",
-    };
+type InputFieldProps = HTMLAttributes<HTMLLabelElement> & {
+    value: string;
+    setValue: (v: string) => void;
+    isPassword?: boolean;
+};
+
+export function InputField({ value, setValue, isPassword = false }: InputFieldProps) {
+
+    const attrs =
+        isPassword
+            ? {
+                type: "password",
+                autoComplete: "password",
+            }
+            : {
+                type: "text",
+                autoComplete: "email",
+            };
+
     return (
         <label className="text-indigo-800">
+
             {isPassword ? "Password" : "Username"}
-            <input {...attrs} value={value} onChange={e => setValue(e.target.value)} />
+
+            <input
+                {...attrs}
+                className="inp"
+                spellCheck={false}
+                value={value}
+                onChange={e => setValue(e.target.value)}
+            />
+            
         </label>
     );
 }

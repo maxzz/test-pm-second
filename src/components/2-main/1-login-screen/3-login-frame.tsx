@@ -6,7 +6,10 @@ const formStyles = {
     boxShadow: 'var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)',
 };
 
-const sectionClasses = "bg-indigo-200 rounded-lg border shadow-sm ring-2 ring-indigo-500 ring-offset-1 ring-offset-indigo-600";
+const sectionClasses = "\
+bg-indigo-200 \
+ring-indigo-500 ring-offset-indigo-600 ring-offset-1 ring-2 \
+rounded-lg border shadow-sm";
 
 export function LoginFrame() {
 

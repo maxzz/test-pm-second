@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai';
-import { showBabbaAtom } from '../../store/store';
+import { showBubbaAtom } from '../../store/store';
 import { a, easings, useSpring } from '@react-spring/web';
 
 export function calcAllLength<T extends SVGGeometryElement>(selector: string, root: T | undefined): number[] {
@@ -19,7 +19,7 @@ const PATHS = [
 const LENS = [1924, 399, 185, 172, 957];
 
 export function GhostOld() {
-    const [show, setShowBabba] = useAtom(showBabbaAtom);
+    const [show, setShowBabba] = useAtom(showBubbaAtom);
 
     const ani = useSpring({
         from: { o: 1, stroke: 'red', transform: 'scale(1)' },
@@ -54,7 +54,7 @@ export function GhostOld() {
         <div className="relative z-10">
             <div className="absolute top-4 right-64 w-32 h-32 text-indigo-900">
                 <svg viewBox="0 0 680 478" stroke="currentColor" strokeWidth="7" className="transform scale-x-[-1] fill-[none]" >
-                    
+
                     {/* {console.log('render', Object.entries(styles).map(([key, val]) => `${key}: ${val.get()}`))} */}
 
                     <a.g style={{ transform: ani.transform, transformOrigin: 'bottom right' }}>
