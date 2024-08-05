@@ -1,25 +1,26 @@
-import React from "react";
+import { RefObject, useEffect, useState } from "react";
 
-// assumes the resize-observer-polyfill is loaded, this can be done through polyfill.io
-export function useElementSize(parentRef: React.RefObject<Element>): { width: number; height: number; } {
-    const [size, setSize] = React.useState({ width: 0, height: 0 });
+export function useElementSize(parentRef: RefObject<Element>): { width: number; height: number; } {
+    const [size, setSize] = useState({ width: 0, height: 0 });
 
-    React.useEffect(
+    useEffect(
         () => {
-            if (typeof window === 'undefined' || !parentRef.current?.nodeType) {
-                return; //if (!parentRef.current.nodeType) throw new Error('Make sure the ref argument is a valid DOM node');
+            if (!parentRef.current?.nodeType) {
+                return;
             }
 
-            const resizeObserver = new window.ResizeObserver(callback);
-            resizeObserver.observe(parentRef.current);
-
-            return () => resizeObserver.disconnect();
-
-            function callback([entry]: ResizeObserverEntry[]) {
-                setSize({ width: entry.contentRect.width, height: entry.contentRect.height });
+            function resizerCb([entry]: ResizeObserverEntry[]) {
+                setSize({
+                    width: entry.contentRect.width,
+                    height: entry.contentRect.height,
+                });
             }
-        },
-        [parentRef]
+
+            const observer = new window.ResizeObserver(resizerCb);
+            observer.observe(parentRef.current);
+
+            return () => observer.disconnect();
+        }, [parentRef]
     );
 
     return size;
