@@ -1,7 +1,7 @@
 import { HTMLAttributes, useEffect } from "react";
 import { useAtomValue, useSetAtom } from "jotai";
 import { useSpring, a } from "@react-spring/web";
-import { showBubbaAtom, ghostTargetAtom } from "@/store/store";
+import { showBubbaAtom, ghostTargetAtom } from "@/store";
 import { IconUser } from "@/ui/icons";
 
 export function FormAnimatedLogo({ className, ...rest }: HTMLAttributes<HTMLDivElement>) {

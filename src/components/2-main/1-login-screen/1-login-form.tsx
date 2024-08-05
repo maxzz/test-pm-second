@@ -1,6 +1,6 @@
 import { useSetAtom } from "jotai";
 import { useLocalStorage } from "use-hooks";
-import { loginStartedAtom } from "@/store/store";
+import { loginStartedAtom } from "@/store";
 import { FormAnimatedLogo } from "./2-form-animated-logo";
 import { InputField } from "./4-input-field";
 

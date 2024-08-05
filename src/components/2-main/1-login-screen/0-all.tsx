@@ -1,5 +1,5 @@
 import { useAtomValue } from "jotai";
-import { showBubbaAtom } from "../../../store/store";
+import { showBubbaAtom } from "../../../store";
 import { LoginFrame } from "./3-login-frame";
 
 export function LoginScreen() {

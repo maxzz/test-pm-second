@@ -1,10 +1,10 @@
-import React, { HTMLAttributes, useEffect, useRef } from "react";
-import { classNames } from "../../utils/classnames";
+import { HTMLAttributes, useEffect, useRef } from "react";
+import { useSetAtom } from "jotai";
+import { classNames } from "@/utils";
 import { LoginScreen } from "./1-login-screen";
 import { GhostMain, GhostOld } from "./2-ghost";
 import { useElementSize } from "../../hooks/useElementSize";
-import { useSetAtom } from "jotai";
-import { workingAreaAtom } from "../../store/store";
+import { workingAreaAtom } from "@/store";
 
 export function App_Main({ className, ...rest }: HTMLAttributes<HTMLDivElement>) {
     const setWorkingArea = useSetAtom(workingAreaAtom);

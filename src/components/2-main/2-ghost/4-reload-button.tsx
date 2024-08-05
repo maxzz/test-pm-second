@@ -1,6 +1,6 @@
 import { HTMLAttributes } from "react";
 import { useAtom } from "jotai";
-import { loginStartedAtom } from "../../../store/store";
+import { loginStartedAtom } from "../../../store";
 import { classNames } from "../../../utils/classnames";
 
 const buttonClasses = "self-center \
