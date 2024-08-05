@@ -1,19 +1,23 @@
 import { useState } from 'react';
 
-function useLocalStorage<T>(key: string, defaultValue?: T | (() => T)) {
+export function useLocalStorage<T>(key: string, defaultValue?: T | (() => T)) {
     // TODO: debounce, if (window && listenToStorageChanges) useEventListener(window, 'storage', read);
 
-    let [storedValue, setStoredValue] = useState<T>(() => {
-        let stored = localStorage.getItem(key);
-        if (stored !== null) {
-            try {
-                return JSON.parse(stored);
-            } catch (error) {
-                return defaultValue;
+    let [storedValue, setStoredValue] = useState<T>(
+        () => {
+            let stored = localStorage.getItem(key);
+
+            if (stored !== null) {
+                try {
+                    return JSON.parse(stored);
+                } catch (error) {
+                    return defaultValue;
+                }
             }
+            
+            return typeof defaultValue === 'function' ? (defaultValue as () => T)() : defaultValue;
         }
-        return typeof defaultValue === 'function' ? (defaultValue as () => T)() : defaultValue;
-    });
+    );
 
     const setValue = (value: T | ((val: T) => T)) => {
         try {
@@ -33,5 +37,3 @@ function useLocalStorage<T>(key: string, defaultValue?: T | (() => T)) {
 
     return [storedValue, setValue] as const;
 }
-
-export default useLocalStorage;
