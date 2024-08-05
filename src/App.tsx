@@ -1,7 +1,7 @@
 import React from 'react';
 import { App_Header } from './components/1-header';
 import { App_Main } from './components/2-main';
-import { AppSection3_Footer } from './components/AppSection3_Footer';
+import { AppSection3_Footer } from './components/3-footer';
 
 export function App() {
     return (
