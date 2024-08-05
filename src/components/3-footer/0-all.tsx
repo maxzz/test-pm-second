@@ -2,21 +2,7 @@ import { AnchorHTMLAttributes } from 'react';
 import { classNames } from '../../utils/classnames';
 import { ReloadButton } from '../../ui/ReloadButton';
 import { pageTitles } from './xlinks';
-
-function NumberLink({ label, className, ...rest }: { label: string; } & AnchorHTMLAttributes<HTMLAnchorElement>) {
-    return (
-        <a
-            className={classNames(
-                "px-2 mt-1 w-6 h-6 text-xs border-current border rounded grid place-items-center",
-                "hover:text-indigo-200 hover:bg-indigo-700 hover:scale-[1.2] transition-transform",
-                className,
-            )}
-            {...rest}
-        >
-            {label}
-        </a>
-    );
-}
+import { NumberLink } from './1-number-link';
 
 function GithubLink({ className, ...rest }: AnchorHTMLAttributes<HTMLAnchorElement>) {
     return (
