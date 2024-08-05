@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAtom, useAtomValue } from 'jotai';
-import { ghostTargetAtom, loginStartedAtom, workingAreaAtom } from '../../store/store';
-import { IconGhost } from '../../ui/icons';
+import { ghostTargetAtom, loginStartedAtom, workingAreaAtom } from '../../../store/store';
+import { IconGhost } from '../../../ui/icons';
 import { a, easings, useSpring, useSpringRef } from '@react-spring/web';
 import { ReloadButton } from './4-reload-button';
 

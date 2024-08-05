@@ -12,11 +12,11 @@ export function LoginForm() {
 
     return (
         <form id="test" className="w-64 text-sm">
-            <div className="p-4 text-indigo-400 border-indigo-700 border-b">
+            <div className="p-4 text-indigo-400 border-indigo-700/50 border-b">
                 <FormAnimatedLogo />
             </div>
 
-            <div className="px-4 py-8 flex flex-col">
+            <div className="px-4 py-4 flex flex-col">
                 <InputField value={username} setValue={setUsername} />
                 <InputField value={password} setValue={setPassword} isPassword={true} />
 

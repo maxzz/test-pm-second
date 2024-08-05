@@ -1,4 +1,4 @@
-import { ReloadButton } from '../2-main/4-reload-button';
+import { ReloadButton } from '../2-main/2-ghost/4-reload-button';
 import { NumberLink } from './1-number-link';
 import { GithubLink } from './2-github-link';
 import { githubUrl, pageUrls } from './9-urls';
