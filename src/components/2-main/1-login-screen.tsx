@@ -107,6 +107,8 @@ const formStyles = {
 export function LoginScreen() {
     const showBabba = useAtomValue(showBabbaAtom);
     return (<>
-        {!showBabba && <LoginFrame />}
+        {!showBabba && (
+            <LoginFrame />
+        )}
     </>);
 }

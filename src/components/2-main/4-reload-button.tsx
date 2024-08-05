@@ -1,7 +1,7 @@
 import { HTMLAttributes } from "react";
 import { useAtom } from "jotai";
-import { loginStartedAtom } from "../store/store";
-import { classNames } from "../utils/classnames";
+import { loginStartedAtom } from "../../store/store";
+import { classNames } from "../../utils/classnames";
 
 const buttonClasses = "self-center \
 mr-2 px-2 py-1 text-xs \

@@ -1,4 +1,3 @@
-import React from "react";
 import { IconGhost } from "../../ui/icons";
 import { a, config, useSpring } from "@react-spring/web";
 

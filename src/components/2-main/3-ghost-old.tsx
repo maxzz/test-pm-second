@@ -1,10 +1,11 @@
-import React from 'react';
 import { useAtom } from 'jotai';
 import { showBabbaAtom } from '../../store/store';
 import { a, easings, useSpring } from '@react-spring/web';
 
 export function calcAllLength<T extends SVGGeometryElement>(selector: string, root: T | undefined): number[] {
-    return [...(root || document).querySelectorAll<SVGGeometryElement>(selector)].map((el) => Math.ceil(el.getTotalLength()));
+    return [...(root || document)
+        .querySelectorAll<SVGGeometryElement>(selector)]
+        .map((el) => Math.ceil(el.getTotalLength()));
 }
 
 const PATHS = [
@@ -20,7 +21,7 @@ const LENS = [1924, 399, 185, 172, 957];
 export function GhostOld() {
     const [show, setShowBabba] = useAtom(showBabbaAtom);
 
-    const styles = useSpring({
+    const ani = useSpring({
         from: { o: 1, stroke: 'red', transform: 'scale(1)' },
 
         //to: { o: show ? 0 : 1 },
@@ -53,17 +54,18 @@ export function GhostOld() {
         <div className="relative z-10">
             <div className="absolute top-4 right-64 w-32 h-32 text-indigo-900">
                 <svg viewBox="0 0 680 478" stroke="currentColor" strokeWidth="7" className="transform scale-x-[-1] fill-[none]" >
+                    
                     {/* {console.log('render', Object.entries(styles).map(([key, val]) => `${key}: ${val.get()}`))} */}
 
-                    <a.g style={{ transform: styles.transform, transformOrigin: 'bottom right' }}>
+                    <a.g style={{ transform: ani.transform, transformOrigin: 'bottom right' }}>
                         <g transform="translate(-150 -167)">
                             {PATHS.map((path, idx) => (
                                 <a.path
                                     key={idx}
-                                    stroke={styles.stroke}
-                                    strokeWidth={styles.o.to([1, 0.5, 0], [25, 22, 7])}
+                                    stroke={ani.stroke}
+                                    strokeWidth={ani.o.to([1, 0.5, 0], [25, 22, 7])}
                                     style={{
-                                        strokeDashoffset: styles.o.to({ range: [0, 1], output: [0, LENS[idx]] }),
+                                        strokeDashoffset: ani.o.to({ range: [0, 1], output: [0, LENS[idx]] }),
                                         strokeDasharray: LENS[idx],
                                     }}
                                     d={path}

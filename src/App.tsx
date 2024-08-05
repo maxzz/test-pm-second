@@ -1,4 +1,3 @@
-import React from 'react';
 import { App_Header } from './components/1-header';
 import { App_Main } from './components/2-main';
 import { App_Footer } from './components/3-footer';
