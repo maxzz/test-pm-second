@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAtom } from 'jotai';
-import { showBabbaAtom } from '../store/store';
+import { showBabbaAtom } from '../../store/store';
 import { a, easings, useSpring } from '@react-spring/web';
 
 export function calcAllLength<T extends SVGGeometryElement>(selector: string, root: T | undefined): number[] {

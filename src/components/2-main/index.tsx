@@ -1,8 +1,8 @@
 import React, { HTMLAttributes, useEffect, useRef } from "react";
 import { classNames } from "../../utils/classnames";
-import { LoginScreen } from "../LoginScreen";
-import { GhostMain } from "../GhostMain";
-import { GhostOld } from "../GhostOld";
+import { LoginScreen } from "./1-login-screen";
+import { GhostMain } from "./2-ghost-main";
+import { GhostOld } from "./3-ghost-old";
 import { useElementSize } from "../../hooks/useElementSize";
 import { useSetAtom } from "jotai";
 import { workingAreaAtom } from "../../store/store";
