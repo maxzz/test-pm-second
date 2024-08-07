@@ -18,24 +18,24 @@ const animationProps = {
     from: {
         opacity: 0,
         scale: '0.5, 0.5',
-        n: 0,
+        nmb: 0,
         fill: '#312e81',
     },
     to: [
-        { n: 1, opacity: 1, config: { duration: 0, }, }, // skip all move transitions to test the rest of animation
-        { n: 1, opacity: 1, config: { duration: 900, }, }, // #312e81 to have it flat
+        { nmb: 1, opacity: 1,               /**/ config: { duration: 0, }, }, // skip all move transitions to test the rest of animation
+        { nmb: 1, opacity: 1,               /**/ config: { duration: 900, }, }, // #312e81 to have it flat
 
-        { scale: '0.1, 1', config: { duration: 300, }, },
-        { scale: '1, 0.5', config: { duration: 600, }, },
-        { scale: '0.7, 1', config: { duration: 400, }, },
-        { scale: '1.1, 0.9', config: { duration: 600, }, },
-        { scale: '0.9, 1', config: { duration: 400, }, },
+        { scale: '0.1, 1',                  /**/ config: { duration: 300, }, },
+        { scale: '1, 0.5',                  /**/ config: { duration: 600, }, },
+        { scale: '0.7, 1',                  /**/ config: { duration: 400, }, },
+        { scale: '1.1, 0.9',                /**/ config: { duration: 600, }, },
+        { scale: '0.9, 1',                  /**/ config: { duration: 400, }, },
         { scale: '0, 0', },
         { scale: '-1, 1', opacity: 1, },
 
-        { fill: '#ff0000', config: { duration: 1200, }, },
-        { opacity: 0.5, fill: '#312e81', config: { duration: 500, }, },
-        { opacity: 0, fill: '#00000000', config: { duration: 200, }, }, // from bkg #c7d2fe
+        { fill: '#ff0000',              /**/ config: { duration: 1200, }, },
+        { opacity: 0.5, fill: '#312e81',/**/ config: { duration: 500, }, },
+        { opacity: 0, fill: '#00000000',  /**/ config: { duration: 200, }, }, // from bkg #c7d2fe
     ]
 };
 
@@ -51,12 +51,13 @@ const yPos = (pos: number, max: number) => ({
 
 export function GhostMain() {
     const ghostTarget = useAtomValue(ghostTargetAtom);
-    const { width: wArea, height: hArea } = useAtomValue(workingAreaAtom);
+
+    const { width: areaWidth, height: areaHeight } = useAtomValue(workingAreaAtom);
     const [pos, setPos] = useState({ x: 0, y: 0 });
 
     const api = useSpringRef();
     const ani = useSpring({ ref: api, from: animationProps.from });
-    const { n, ...rest } = ani;
+    const { nmb, ...rest } = ani;
 
     const [loginStarted, setLoginStarted] = useAtom(loginStartedAtom);
 
@@ -71,28 +72,27 @@ export function GhostMain() {
     );
 
     function start() {
-        setPos(getTargetPos(ghostTarget, { x: wArea / 2, y: hArea / 2 }));
+        setPos(getTargetPos(ghostTarget, { x: areaWidth / 2, y: areaHeight / 2 }));
+
         api.start({
             ...animationProps,
             onRest: ({ finished }) => finished && setLoginStarted(false),
         });
     }
 
-    return (
-        <div>
-            {/* <ReloadButton /> */}
+    return (<>
+        {/* <ReloadButton /> */}
 
-            {loginStarted && (
-                <GhostAnimatedIcon
-                    data-n={n}
-                    style={{
-                        x: n.to(xPos(pos.x, wArea)),
-                        y: n.to(yPos(pos.y, hArea)),
-                        ...rest,
-                    }}
-                    className="absolute left-0 top-0 w-32 h-32 fill-slate-500 text-indigo-900" strokeWidth={.7}
-                />
-            )}
-        </div>
-    );
+        {loginStarted && (
+            <GhostAnimatedIcon
+                data-n={nmb}
+                style={{
+                    x: nmb.to(xPos(pos.x, areaWidth)),
+                    y: nmb.to(yPos(pos.y, areaHeight)),
+                    ...rest,
+                }}
+                className="absolute left-0 top-0 size-32 fill-slate-500 text-indigo-900" strokeWidth={.7}
+            />
+        )}
+    </>);
 }
