@@ -10,9 +10,9 @@ export function App_Footer() {
         //<footer className="p-4 flex items-center justify-between bg-[#03014d] bg-hero-pattern text-indigo-600 border-indigo-900 border-t" style={footerShadow}>
         <footer className="p-4 flex items-center justify-between bg-indigo-900 text-indigo-600 border-indigo-900 border-t" style={footerShadow}>
 
-            <div className="flex space-x-4">
+            <div className="flex items-center space-x-4">
                 <GithubLink href={githubUrl} title="Open GitHub source code" />
-                <ReloadButton className="w-16 opacity-25 hover:opacity-100" />
+                <ReloadButton className="py-1.5 opacity-25 hover:opacity-100" />
             </div>
 
             <div className="flex items-center space-x-2">

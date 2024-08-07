@@ -23,20 +23,20 @@ const animationProps = {
         fill: '#312e81',
     },
     to: [
-        { nmb: 1, opacity: 1,                   /**/ config: { duration: 0, }, }, // skip all move transitions to test the rest of animation
-        { nmb: 1, opacity: 1,                   /**/ config: { duration: 900, }, }, // #312e81 to have it flat
+        { nmb: 1, opacity: 1,                       /**/ config: { duration: 0, }, }, // skip all move transitions to test the rest of animation
+        { nmb: 1, opacity: 1,                       /**/ config: { duration: 900, }, }, // #312e81 to have it flat
 
-        { scale: '0.1, 3',                      /**/ config: { duration: 300, }, },
-        { scale: '2, 0.5',                      /**/ config: { duration: 600, }, },
-        { scale: '0.7, 2',                      /**/ config: { duration: 400, }, },
-        { scale: '1.1, 0.9',                    /**/ config: { duration: 600, }, },
-        { scale: '0.9, 2',                      /**/ config: { duration: 400, }, },
+        { scale: '0.1, 3',                          /**/ config: { duration: 300, }, },
+        { scale: '2, 0.5',                          /**/ config: { duration: 600, }, },
+        { scale: '0.7, 2',                          /**/ config: { duration: 400, }, },
+        { scale: '1.1, 0.9',                        /**/ config: { duration: 600, }, },
+        { scale: '0.9, 2',                          /**/ config: { duration: 400, }, },
         { scale: '0, 0', },
         { scale: '-1, 1', opacity: 1, },
 
-        { fill: '#ff0000',                  /**/ config: { duration: 1200, }, },
-        { opacity: 0.5, fill: '#312e81',    /**/ config: { duration: 500, }, },
-        { opacity: 0, fill: '#00000000',      /**/ config: { duration: 200, }, }, // from bkg #c7d2fe
+        { scale: '-1.2, 1.2', fill: '#ff0000',  /**/ config: { duration: 1200, }, },
+        { opacity: 0.5, fill: '#312e81',        /**/ config: { duration: 500, }, },
+        { opacity: 0, fill: '#00000000',          /**/ config: { duration: 200, }, }, // from bkg #c7d2fe
     ]
 };
 

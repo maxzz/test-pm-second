@@ -1,5 +1,5 @@
-import { classNames } from "@/utils/classnames";
 import { AnchorHTMLAttributes } from "react";
+import { classNames } from "@/utils";
 
 export function GithubLink({ className, ...rest }: AnchorHTMLAttributes<HTMLAnchorElement>) {
     return (
