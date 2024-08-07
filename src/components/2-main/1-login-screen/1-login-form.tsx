@@ -3,6 +3,18 @@ import { useLocalStorage } from "use-hooks";
 import { loginStartedAtom } from "@/store";
 import { FormAnimatedLogo } from "./2-form-animated-logo";
 import { InputField } from "./4-input-field";
+import { classNames } from "@/utils";
+
+const buttonClasses = "\
+px-4 py-2 text-sm \
+\
+text-indigo-800 bg-indigo-300/50 border-indigo-100 shadow-indigo-400 \
+\
+focus:ring-indigo-300 focus:ring-offset-1 focus:ring-1 \
+\
+transform active:scale-y-95 \
+\
+border rounded shadow-sm outline-none select-none";
 
 export function LoginForm() {
     const setLoginStarted = useSetAtom(loginStartedAtom);
@@ -20,7 +32,7 @@ export function LoginForm() {
                 <InputField value={username} setValue={setUsername} />
                 <InputField value={password} setValue={setPassword} isPassword={true} />
 
-                <button className="btn self-end"
+                <button className={classNames("self-end", buttonClasses)}
                     onClick={(e) => {
                         e.preventDefault();
                         setLoginStarted((v) => !v);

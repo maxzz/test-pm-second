@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
+/* @layer components {
     .btn {
         @apply 
             px-4 py-2 
@@ -14,7 +14,7 @@
             transform active:scale-[.97]
             focus:outline-none select-none;
     }
-}
+} */
 
 /* className="p-4 flex items-center justify-between bg-[#add3e5]" */
 /* <div className="ml-2 pb-1 text-[1.4rem] font-thin text-white" style={{textShadow: '2px 3px #60b2d7'}}> */
