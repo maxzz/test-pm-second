@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { HTMLAttributes, useState } from 'react';
 import { useAtom, useAtomValue } from 'jotai';
 import { ghostTargetAtom, loginStartedAtom, workingAreaAtom } from '../../../store';
 import { IconGhost } from '../../../ui/icons';
 import { a, easings, useSpring, useSpringRef } from '@react-spring/web';
 import { ReloadButton } from './4-reload-button';
+import { classNames } from '@/utils';
 
 const GhostAnimatedIcon = a(IconGhost);
 
@@ -22,20 +23,20 @@ const animationProps = {
         fill: '#312e81',
     },
     to: [
-        { nmb: 1, opacity: 1,               /**/ config: { duration: 0, }, }, // skip all move transitions to test the rest of animation
-        { nmb: 1, opacity: 1,               /**/ config: { duration: 900, }, }, // #312e81 to have it flat
+        { nmb: 1, opacity: 1,                   /**/ config: { duration: 0, }, }, // skip all move transitions to test the rest of animation
+        { nmb: 1, opacity: 1,                   /**/ config: { duration: 900, }, }, // #312e81 to have it flat
 
-        { scale: '0.1, 3',                  /**/ config: { duration: 300, }, },
-        { scale: '2, 0.5',                  /**/ config: { duration: 600, }, },
-        { scale: '0.7, 2',                  /**/ config: { duration: 400, }, },
-        { scale: '1.1, 0.9',                /**/ config: { duration: 600, }, },
-        { scale: '0.9, 2',                  /**/ config: { duration: 400, }, },
+        { scale: '0.1, 3',                      /**/ config: { duration: 300, }, },
+        { scale: '2, 0.5',                      /**/ config: { duration: 600, }, },
+        { scale: '0.7, 2',                      /**/ config: { duration: 400, }, },
+        { scale: '1.1, 0.9',                    /**/ config: { duration: 600, }, },
+        { scale: '0.9, 2',                      /**/ config: { duration: 400, }, },
         { scale: '0, 0', },
         { scale: '-1, 1', opacity: 1, },
 
-        { fill: '#ff0000',              /**/ config: { duration: 1200, }, },
-        { opacity: 0.5, fill: '#312e81',/**/ config: { duration: 500, }, },
-        { opacity: 0, fill: '#00000000',  /**/ config: { duration: 200, }, }, // from bkg #c7d2fe
+        { fill: '#ff0000',                  /**/ config: { duration: 1200, }, },
+        { opacity: 0.5, fill: '#312e81',    /**/ config: { duration: 500, }, },
+        { opacity: 0, fill: '#00000000',      /**/ config: { duration: 200, }, }, // from bkg #c7d2fe
     ]
 };
 
@@ -49,7 +50,7 @@ const yPos = (pos: number, max: number) => ({
     output: [100, pos / 2, pos],
 });
 
-export function GhostMain() {
+export function GhostMain({ className, ...rest }: HTMLAttributes<SVGSVGElement>) {
     const ghostTarget = useAtomValue(ghostTargetAtom);
 
     const { width: areaWidth, height: areaHeight } = useAtomValue(workingAreaAtom);
@@ -57,7 +58,7 @@ export function GhostMain() {
 
     const api = useSpringRef();
     const ani = useSpring({ ref: api, from: animationProps.from });
-    const { nmb, ...rest } = ani;
+    const { nmb, ...restAni } = ani;
 
     const [loginStarted, setLoginStarted] = useAtom(loginStartedAtom);
 
@@ -89,9 +90,10 @@ export function GhostMain() {
                 style={{
                     x: nmb.to(xPos(pos.x, areaWidth)),
                     y: nmb.to(yPos(pos.y, areaHeight)),
-                    ...rest,
+                    ...restAni,
                 }}
-                className="absolute left-0 top-0 size-32 fill-slate-500 text-indigo-900" strokeWidth={.7}
+                className={classNames("size-32 fill-slate-500 text-indigo-900", className)} strokeWidth={.7}
+                {...rest}
             />
         )}
     </>);

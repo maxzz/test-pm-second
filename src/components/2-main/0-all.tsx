@@ -17,7 +17,7 @@ export function App_Main({ className, ...rest }: HTMLAttributes<HTMLDivElement>)
 
     return (
         <div ref={containerRef} className={classNames("relative h-full flex items-center justify-center", className)} {...rest}>
-            <GhostMain />
+            <GhostMain className="absolute left-0 top-0" />
             <GhostOld />
             <LoginScreen />
         </div>
