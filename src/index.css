@@ -3,18 +3,6 @@
 @tailwind utilities;
 
 @layer components {
-    .inp {
-        @apply 
-            px-2 py-1 mt-1 mb-4 
-            text-base 
-            text-indigo-800 w-full 
-            border border-indigo-300 
-            shadow-inner 
-            rounded 
-            outline-none 
-            focus:ring focus:ring-indigo-300 focus:ring-offset-1;
-    }
-
     .btn {
         @apply 
             px-4 py-2 

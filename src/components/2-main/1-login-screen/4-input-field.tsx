@@ -6,6 +6,15 @@ type InputFieldProps = HTMLAttributes<HTMLLabelElement> & {
     isPassword?: boolean;
 };
 
+const inputClasses = "\
+mt-1 mb-4 px-2 py-1 text-base \
+\
+text-indigo-800 w-full border-indigo-300 \
+\
+focus:ring focus:ring-indigo-300 focus:ring-offset-1 outline-none \
+\
+border rounded shadow-inner";
+
 export function InputField({ value, setValue, isPassword = false }: InputFieldProps) {
 
     const attrs =
@@ -26,7 +35,7 @@ export function InputField({ value, setValue, isPassword = false }: InputFieldPr
 
             <input
                 {...attrs}
-                className="inp"
+                className={inputClasses}
                 spellCheck={false}
                 value={value}
                 onChange={e => setValue(e.target.value)}
