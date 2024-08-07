@@ -92,7 +92,7 @@ export function GhostMain({ className, ...rest }: HTMLAttributes<SVGSVGElement>)
                     y: nmb.to(yPos(pos.y, areaHeight)),
                     ...restAni,
                 }}
-                className={classNames("size-32 fill-slate-500 text-indigo-900", className)} strokeWidth={.7}
+                className={classNames("stroke-[.7] fill-slate-500 text-indigo-900", className)}
                 {...rest}
             />
         )}
