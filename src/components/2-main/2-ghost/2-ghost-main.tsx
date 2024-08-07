@@ -25,11 +25,11 @@ const animationProps = {
         { nmb: 1, opacity: 1,               /**/ config: { duration: 0, }, }, // skip all move transitions to test the rest of animation
         { nmb: 1, opacity: 1,               /**/ config: { duration: 900, }, }, // #312e81 to have it flat
 
-        { scale: '0.1, 1',                  /**/ config: { duration: 300, }, },
-        { scale: '1, 0.5',                  /**/ config: { duration: 600, }, },
-        { scale: '0.7, 1',                  /**/ config: { duration: 400, }, },
+        { scale: '0.1, 3',                  /**/ config: { duration: 300, }, },
+        { scale: '2, 0.5',                  /**/ config: { duration: 600, }, },
+        { scale: '0.7, 2',                  /**/ config: { duration: 400, }, },
         { scale: '1.1, 0.9',                /**/ config: { duration: 600, }, },
-        { scale: '0.9, 1',                  /**/ config: { duration: 400, }, },
+        { scale: '0.9, 2',                  /**/ config: { duration: 400, }, },
         { scale: '0, 0', },
         { scale: '-1, 1', opacity: 1, },
 
