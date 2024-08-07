@@ -1,6 +1,5 @@
 import { forwardRef, SVGProps, Ref } from "react";
 
-
 export const IconGhostBubba = forwardRef((props: SVGProps<SVGSVGElement>, ref: Ref<SVGPathElement>) => {
     return (
         <svg viewBox="0 0 637 450" stroke="currentColor" strokeWidth="5" {...props}>
