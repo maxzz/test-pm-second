@@ -1,10 +1,10 @@
-import React, { HTMLAttributes, useState } from 'react';
+import { HTMLAttributes, useEffect, useState } from 'react';
 import { useAtom, useAtomValue } from 'jotai';
-import { ghostTargetAtom, loginStartedAtom, workingAreaAtom } from '../../../store';
-import { IconGhost } from '../../../ui/icons';
 import { a, easings, useSpring, useSpringRef } from '@react-spring/web';
-import { ReloadButton } from './4-reload-button';
+import { ghostTargetAtom, loginStartedAtom, workingAreaAtom } from '@/store';
+import { IconGhost } from '@/ui/icons';
 import { classNames } from '@/utils';
+import { ReloadButton } from './4-reload-button';
 
 const GhostAnimatedIcon = a(IconGhost);
 
@@ -62,7 +62,7 @@ export function GhostMain({ className, ...rest }: HTMLAttributes<SVGSVGElement>)
 
     const [loginStarted, setLoginStarted] = useAtom(loginStartedAtom);
 
-    React.useEffect(
+    useEffect(
         () => {
             if (loginStarted) {
                 api.stop(true); // if we started again by reseting loginStarted, i.e. loginStarted -> false -> true

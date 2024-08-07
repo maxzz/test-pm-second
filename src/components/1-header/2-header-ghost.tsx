@@ -1,5 +1,5 @@
 import { a, useSpring, config } from "@react-spring/web";
-import { IconGhost } from "@/ui/icons";
+import { IconGhost } from '@/ui/icons/IconGhost';
 
 const AIconGhost = a(IconGhost);
 const color = '#e0e7ff80'; //text-indigo-100/50

@@ -1,6 +1,5 @@
 import { SVGProps } from "react";
 
-
 export function PhUserCircleDuotone(props: SVGProps<SVGSVGElement>) {
     return (
         <svg viewBox="0 0 256 256" fill="currentColor" {...props}>
