@@ -1,9 +1,9 @@
 import { HTMLAttributes, useEffect, useRef } from "react";
 import { useSetAtom } from "jotai";
 import { classNames } from "@/utils";
-import { LoginScreen } from "./1-login-screen";
-import { GhostMain, GhostOld } from "./2-ghost";
-import { useElementSize } from "../../hooks/useElementSize";
+import { LoginScreen } from "../1-login-screen";
+import { GhostMain, GhostOld } from "../2-ghost";
+import { useElementSize } from "../../../hooks/useElementSize";
 import { workingAreaAtom } from "@/store";
 
 export function App_Main({ className, ...rest }: HTMLAttributes<HTMLDivElement>) {
@@ -17,7 +17,7 @@ export function App_Main({ className, ...rest }: HTMLAttributes<HTMLDivElement>)
 
     return (
         <div ref={containerRef} className={classNames("relative h-full flex items-center justify-center overflow-hidden", className)} {...rest}>
-            <GhostMain className="absolute left-3.5 top-16 size-64" />
+            <GhostMain className="absolute left-6 top-16 size-64" />
             <GhostOld />
             <LoginScreen />
         </div>
