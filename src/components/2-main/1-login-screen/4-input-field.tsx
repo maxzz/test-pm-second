@@ -7,7 +7,7 @@ type InputFieldProps = HTMLAttributes<HTMLLabelElement> & {
 };
 
 const inputClasses = "\
-mt-1 mb-4 px-2 py-1 text-base \
+px-2 py-1 text-base \
 \
 text-indigo-800 w-full border-indigo-300 \
 \
@@ -29,7 +29,7 @@ export function InputField({ value, setValue, isPassword = false }: InputFieldPr
             };
 
     return (
-        <label className="text-indigo-800">
+        <label className="flex flex-col gap-y-0.5 text-indigo-800">
 
             {isPassword ? "Password" : "Username"}
 
