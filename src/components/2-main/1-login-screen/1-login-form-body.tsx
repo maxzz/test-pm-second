@@ -16,7 +16,7 @@ transform active:scale-y-95 \
 \
 border rounded shadow-sm outline-none select-none";
 
-export function LoginForm() {
+export function LoginFormBody() {
     const setLoginStarted = useSetAtom(loginStartedAtom);
 
     const [username, setUsername] = useLocalStorage('pm-test-2-username', 'maxzz');
