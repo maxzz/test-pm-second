@@ -1,6 +1,6 @@
 import { useAtomValue } from "jotai";
 import { showBubbaAtom } from "../../../store";
-import { LoginFrame } from "./3-login-frame";
+import { LoginFrame } from "./2-login-frame";
 import { LoginFormBody } from "./1-login-form-body";
 
 export function LoginScreen() {

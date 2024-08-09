@@ -29,7 +29,7 @@ export function InputField({ value, setValue, isPassword = false }: InputFieldPr
             };
 
     return (
-        <label className="flex flex-col gap-y-0.5 text-indigo-800">
+        <label className="flex flex-col gap-y-0.5 text-xs text-indigo-800">
 
             {isPassword ? "Password" : "Username"}
 
