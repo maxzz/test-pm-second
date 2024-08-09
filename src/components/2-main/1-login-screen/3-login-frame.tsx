@@ -1,5 +1,5 @@
 import { useSpring, config, a } from "@react-spring/web";
-import { LoginForm } from "./1-login-form";
+import { classNames } from "@/utils";
 
 const formStyles = {
     '--tw-ring-offset-color': '#fff',
@@ -11,7 +11,7 @@ bg-indigo-200 overflow-hidden \
 ring-indigo-500 ring-offset-indigo-600 ring-offset-1 ring-2 \
 rounded-lg border shadow-sm";
 
-export function LoginFrame() {
+export function LoginFrame({className, children, ...rest}: React.HTMLAttributes<HTMLTableSectionElement>) {
 
     const [ani, api] = useSpring(
         () => ({
@@ -24,9 +24,8 @@ export function LoginFrame() {
     return (
         <a.div style={{ ...ani, ...{ boxShadow: '#fff1ce4a 0px 0px 15px 6px' } }}>
 
-            <section className={sectionClasses} style={formStyles}>
-                <LoginForm />
-                {/* TODO: make it as children */}
+            <section className={classNames(sectionClasses, className)} style={formStyles} {...rest}>
+                {children}
             </section>
 
         </a.div>
