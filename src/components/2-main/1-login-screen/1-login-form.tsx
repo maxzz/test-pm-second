@@ -23,20 +23,23 @@ export function LoginForm() {
     const [password, setPassword] = useLocalStorage('pm-test-2-password', '123456');
 
     return (
-        <form id="test" className="w-64 text-sm">
-            <div className="p-4 text-indigo-400 border-indigo-700/50 border-b">
+        <form id="test" className="w-72 text-sm">
+
+            <div className="p-4 text-indigo-400 bg-indigo-300 border-indigo-700/50 border-b">
                 <FormAnimatedLogo />
             </div>
 
-            <div className="px-4 py-4 flex flex-col">
+            <div className="px-4 py-4 flex flex-col gap-y-3">
                 <InputField value={username} setValue={setUsername} />
                 <InputField value={password} setValue={setPassword} isPassword={true} />
 
-                <button className={classNames("self-end", buttonClasses)}
+                <button
+                    className={classNames("mt-3 self-end", buttonClasses)}
                     onClick={(e) => {
                         e.preventDefault();
                         setLoginStarted((v) => !v);
                     }}
+                    type="button"
                 >
                     Login
                 </button>

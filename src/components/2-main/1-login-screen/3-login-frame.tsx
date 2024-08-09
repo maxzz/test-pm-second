@@ -7,7 +7,7 @@ const formStyles = {
 };
 
 const sectionClasses = "\
-bg-indigo-200 \
+bg-indigo-200 overflow-hidden \
 ring-indigo-500 ring-offset-indigo-600 ring-offset-1 ring-2 \
 rounded-lg border shadow-sm";
 
@@ -26,6 +26,7 @@ export function LoginFrame() {
 
             <section className={sectionClasses} style={formStyles}>
                 <LoginForm />
+                {/* TODO: make it as children */}
             </section>
 
         </a.div>
