@@ -1,3 +1,4 @@
+import { HTMLAttributes, ReactNode } from "react";
 import { useSpring, config, a } from "@react-spring/web";
 import { classNames } from "@/utils";
 
@@ -11,7 +12,7 @@ bg-indigo-200 overflow-hidden \
 ring-indigo-500 ring-offset-indigo-600 ring-offset-1 ring-2 \
 rounded-lg border shadow-sm";
 
-export function LoginFrame({className, children, ...rest}: React.HTMLAttributes<HTMLTableSectionElement>) {
+export function LoginFrame({ className, children, ...rest }: { children: ReactNode; } & HTMLAttributes<HTMLTableSectionElement>) {
 
     const [ani, api] = useSpring(
         () => ({
