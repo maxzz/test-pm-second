@@ -12,3 +12,6 @@ export const IconGhostBubba = forwardRef(
         );
     }
 );
+
+// It's simple to use DevTools $0('svg path:nth-child(1)').getTotalLength()
+// or $('#test > div.p-4.text-indigo-400 > svg > path:nth-child(1)').getTotalLength() -> 296.60845947265625
