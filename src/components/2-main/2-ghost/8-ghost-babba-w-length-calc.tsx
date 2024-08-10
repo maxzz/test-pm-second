@@ -8,7 +8,9 @@ export function GhostBubbaSvgLengthCalc() {
     useEffect(
         () => {
             if (pathRef.current) {
-                setPathLen(pathRef.current.getTotalLength()); //console.log({pathLen: pathLen});
+                const pathLen = pathRef.current.getTotalLength();
+                // console.log({ pathLen });
+                setPathLen(pathLen);
             }
         }, [pathRef.current]
     );
