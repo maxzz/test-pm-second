@@ -25,22 +25,14 @@ export function LoginFormBody() {
     return (
         <form id="test" className="w-72 text-sm">
 
-            <div className="p-4 text-indigo-400 bg-indigo-300 border-indigo-700/50 border-b">
-                <FormAnimatedLogo />
-            </div>
+            <FormAnimatedLogo className="p-4 text-indigo-400 bg-indigo-300 border-indigo-700/50 border-b" />
 
-            <div className="px-4 py-4 flex flex-col gap-y-3">
+            <div className="mt-8 mb-4 px-4 py-4 flex flex-col gap-y-3">
+
                 <InputField value={username} setValue={setUsername} />
                 <InputField value={password} setValue={setPassword} isPassword={true} />
 
-                <button
-                    className={classNames("mt-3 self-end", buttonClasses)}
-                    onClick={(e) => {
-                        e.preventDefault();
-                        setLoginStarted((v) => !v);
-                    }}
-                    type="button"
-                >
+                <button className={classNames("mt-3 self-end", buttonClasses)} onClick={() => setLoginStarted((v) => !v)} type="button">
                     Login
                 </button>
             </div>
