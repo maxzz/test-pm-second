@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { IconGhostBubba } from '@/ui/icons';
 
-export function GhostBabbaWLengthCalc() {
+export function GhostBubbaSvgLengthCalc() {
     const pathRef = useRef<SVGPathElement>(null);
     const [pathLen, setPathLen] = useState(0);
 
