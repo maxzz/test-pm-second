@@ -5,6 +5,7 @@ import { LoginScreen } from "../1-login-screen";
 import { GhostMain, GhostOld } from "../2-ghost";
 import { useElementSize } from "../../../hooks/useElementSize";
 import { workingAreaAtom } from "@/store";
+import { IconGhostDirtyDeeds } from "@/ui/icons";
 
 export function App_Main({ className, ...rest }: HTMLAttributes<HTMLDivElement>) {
     const setWorkingArea = useSetAtom(workingAreaAtom);
@@ -20,6 +21,8 @@ export function App_Main({ className, ...rest }: HTMLAttributes<HTMLDivElement>)
             <GhostMain className="absolute left-6 top-16 size-64" />
             <GhostOld />
             <LoginScreen />
+
+            <IconGhostDirtyDeeds className="absolute right-6 bottom-16 size-64 text-red-400/20 scale-y-[1]" />
         </div>
     );
 }
