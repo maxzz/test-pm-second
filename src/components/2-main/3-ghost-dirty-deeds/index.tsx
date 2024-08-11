@@ -13,10 +13,13 @@ export function GhostDirtyDeeds({ className, ...rest }: HTMLAttributes<HTMLDivEl
         () => ({
             from: {
                 opacity: 1,
+                scaleX: 0.1,
+                scaleY: 0.2,
                 nmb: 1,
             },
             to: async (next, cancel) => {
-                await next({ nmb: 0, opacity: 0, config: { duration: 2200 } });
+                await next({ scaleX: 1, scaleY: 1, config: { duration: 200 }, delay: 2000 });
+                await next({ nmb: 0, opacity: 0, scaleX: .5, scaleY: .5, config: { duration: 700 } });
                 await next({ nmb: 1, opacity: 1, config: { duration: 2900 } });
                 await next({ opacity: 0, config: { duration: 2900 } });
             },
@@ -30,10 +33,10 @@ export function GhostDirtyDeeds({ className, ...rest }: HTMLAttributes<HTMLDivEl
             style={{
                 ...ani,
                 // width: ani.nmb.to((n) => setWorkingArea.width * (1 - n)),
-                transform: ani.nmb.to((nmb) => `scaleY(${nmb})`),
-                // transform: ani.nmb.to((nmb) => `scaleX(${1 - nmb}) scaleY(${nmb})`), <- Not working
+                // transform: ani.nmb.to((nmb) => `scaleY(${nmb})`),
+                // transform: ani.nmb.to((nmb) => `scaleY(${nmb})`),
             }}
-            className={classNames("text-red-400/20 scale-[.5]", className)}
+            className={classNames("text-red-400/20 1scale-[.2]", className)}
             {...rest}
         >
             <IconGhostDirtyDeeds className="" />
