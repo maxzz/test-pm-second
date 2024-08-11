@@ -9,6 +9,7 @@ import { GhostDirtyDeeds } from "../3-ghost-dirty-deeds";
 
 export function App_Main({ className, ...rest }: HTMLAttributes<HTMLDivElement>) {
     const setWorkingArea = useSetAtom(workingAreaAtom);
+    
     const containerRef = useRef<HTMLDivElement>(null);
     const { width, height } = useElementSize(containerRef);
 
@@ -19,7 +20,7 @@ export function App_Main({ className, ...rest }: HTMLAttributes<HTMLDivElement>)
     return (
         <div ref={containerRef} className={classNames("relative h-full flex items-center justify-center overflow-hidden", className)} {...rest}>
             <GhostMain className="absolute left-6 top-16 size-64" />
-            <GhostDirtyDeeds className="absolute right-6 bottom-16 size-64" />
+            <GhostDirtyDeeds className="absolute right-6 bottom-32 size-64" />
             <GhostOld />
             <LoginScreen />
         </div>
