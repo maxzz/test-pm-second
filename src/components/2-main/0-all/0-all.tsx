@@ -20,7 +20,7 @@ export function App_Main({ className, ...rest }: HTMLAttributes<HTMLDivElement>)
     return (
         <div ref={containerRef} className={classNames("relative h-full flex items-center justify-center overflow-hidden", className)} {...rest}>
             <GhostMain className="absolute left-6 top-16 size-64" />
-            <GhostDirtyDeeds className="absolute right-6 bottom-32 size-64" />
+            <GhostDirtyDeeds />
             <GhostOld />
             <LoginScreen />
         </div>

@@ -13,15 +13,17 @@ export function GhostDirtyDeeds({ className, ...rest }: HTMLAttributes<HTMLDivEl
         () => ({
             from: {
                 opacity: 1,
+                x: 0,
+                y: 0,
                 scaleX: 0.1,
                 scaleY: 0.2,
                 nmb: 1,
             },
             to: async (next, cancel) => {
-                await next({ scaleX: 1, scaleY: 1, config: { duration: 200 }, delay: 2000 });
-                await next({ nmb: 0, opacity: 0, scaleX: .5, scaleY: .5, config: { duration: 700 } });
-                await next({ nmb: 1, opacity: 1, config: { duration: 2900 } });
-                await next({ opacity: 0, config: { duration: 2900 } });
+                await next({ scaleX: 1, scaleY: 1, config: { duration: 200 }, delay: 1000 });
+                await next({ nmb: 0, opacity: 0, scaleX: .5, scaleY: .3, config: { duration: 700 } });
+                // await next({ nmb: 1, opacity: 1, config: { duration: 2900 } });
+                // await next({ opacity: 0, config: { duration: 2900 } });
             },
             // config: { duration: 2000 },
             // onRest: () => api.start({ opacity: 0 }),
@@ -36,10 +38,10 @@ export function GhostDirtyDeeds({ className, ...rest }: HTMLAttributes<HTMLDivEl
                 // transform: ani.nmb.to((nmb) => `scaleY(${nmb})`),
                 // transform: ani.nmb.to((nmb) => `scaleY(${nmb})`),
             }}
-            className={classNames("text-red-400/20 1scale-[.2]", className)}
+            className={classNames("absolute text-red-400/20", className)}
             {...rest}
         >
-            <IconGhostDirtyDeeds className="" />
+            <IconGhostDirtyDeeds className="size-64" />
         </a.div>
     );
 }
