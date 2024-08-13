@@ -1,7 +1,7 @@
-import { ReloadButton } from '../2-main/2-ghost/4-reload-button';
+import { githubUrl, pageUrls } from './9-urls';
 import { NumberLink } from './1-number-link';
 import { GithubLink } from './2-github-link';
-import { githubUrl, pageUrls } from './9-urls';
+import { ReloadButton } from './4-reload-button';
 
 const footerShadow = { boxShadow: '#0000003b 0px -2px 10px 2px' };
 
