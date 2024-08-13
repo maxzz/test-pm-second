@@ -14,7 +14,7 @@ export function App_Footer() {
                 <ReloadButton className="py-1.5 opacity-25 hover:opacity-100" />
             </div>
 
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1">
                 <NumberLink label="1" {...pageUrls.t0} />
                 <NumberLink label="2" {...pageUrls.re} className="text-indigo-500 bg-indigo-800" />
                 <NumberLink label="3" {...pageUrls.t2} />
