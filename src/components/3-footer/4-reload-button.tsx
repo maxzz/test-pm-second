@@ -16,7 +16,7 @@ export function ReloadButton({ className }: HTMLAttributes<HTMLInputElement>) {
 
     return (
         <input
-            className={classNames(buttonClasses, className,)}
+            className={classNames(buttonClasses, className)}
             type="button"
             value={loginStarted ? 'Stop' : 'Reload'}
             onClick={() => setLoginStarted((v) => !v)}
